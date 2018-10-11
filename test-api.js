@@ -1,6 +1,8 @@
 //L'application requiert l'utilisation du module Express.
 //La variable express nous permettra d'utiliser les fonctionnalités du module Express.
 var express = require('express');
+var bodyParser = require("body-parser");
+
 
 // Nous définissons ici les paramètres du serveur.
 var hostname = 'localhost';
@@ -16,13 +18,30 @@ var myRouter = express.Router();
 myRouter.route('/canada')
 // J'implémente les méthodes GET, PUT, UPDATE et DELETE
 // GET
+//     .get(function(req,res){
+//         res.json({message : "Liste toutes les photos du Canada", methode : req.method});
+//     })
+
     .get(function(req,res){
-        res.json({message : "Liste toutes les photos du Canada", methode : req.method});
+        res.json({
+            message : "Liste les piscines de Lille Métropole avec paramètres :",
+            ville : req.query.ville,
+            nbResultat : req.query.maxresultat,
+            methode : req.method });
+        //http://localhost:4620/canada?ville=Roubaix&maxresultat=8
     })
     //POST
+    // .post(function(req,res){
+    //     res.json({message : "Ajoute une nouvelle photo à la liste", methode : req.method});
+    // })
     .post(function(req,res){
-        res.json({message : "Ajoute une nouvelle photo à la liste", methode : req.method});
+        res.json({message : "Ajoute une nouvelle peeiscine à la liste",
+            nom : req.body.nom,
+            ville : req.body.ville,
+            taille : req.body.taille,
+            methode : req.method});
     })
+
     //PUT
     .put(function(req,res){
         res.json({message : "Mise à jour des informations des photos", methode : req.method});
@@ -40,6 +59,8 @@ myRouter.route('/')
 
 
 // Nous demandons à l'application d'utiliser notre routeur
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(myRouter);
 
 // Démarrer le serveur
