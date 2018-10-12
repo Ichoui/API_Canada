@@ -2,6 +2,7 @@
 //La variable express nous permettra d'utiliser les fonctionnalités du module Express.
 var express = require('express');
 var bodyParser = require("body-parser");
+require("test");
 
 
 // Nous définissons ici les paramètres du serveur.
@@ -27,8 +28,9 @@ myRouter.route('/canada')
             message : "Liste les piscines de Lille Métropole avec paramètres :",
             ville : req.query.ville,
             nbResultat : req.query.maxresultat,
-            methode : req.method });
+            methode : req.method })
         //http://localhost:4620/canada?ville=Roubaix&maxresultat=8
+        // .res.status(200).send('<h1>TexteTexteTexte</h1>');
     })
     //POST
     // .post(function(req,res){
