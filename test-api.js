@@ -2,7 +2,7 @@
 //La variable express nous permettra d'utiliser les fonctionnalités du module Express.
 var express = require('express');
 var bodyParser = require("body-parser");
-require("test");
+// require("test");
 
 
 // Nous définissons ici les paramètres du serveur.

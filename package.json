@@ -1,0 +1,16 @@
+{
+  "name": "API",
+  "version": "0.0.1",
+  "dependencies": {
+    "mongoose": "^5.3.5"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4"
+  }
+}
