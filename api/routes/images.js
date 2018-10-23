@@ -26,8 +26,7 @@ router.post('/', (req, res, next) => {
                 message: 'We can POST request in /images',
                 createdImage: img
             })
-        }).catch(err => {
-        console.log(err);
+            console.log(err);
         res.status(500).json({error: err})
     });
 });

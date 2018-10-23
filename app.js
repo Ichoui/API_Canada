@@ -3,15 +3,17 @@ const bodyParser = require('body-parser');
 const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+require('dotenv').config()
+
 
 const imagesRoutes = require('./api/routes/images');
 
 const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW  + '@api-canada-hiz94.mongodb.net/test?retryWrites=true';
-// const urlMongoose = 'mongodb://canada:' + process.env.MONGO_ATLAS_PW + '@api-canada-shard-00-00-hiz94.mongodb.net:27017,api-canada-shard-00-01-hiz94.mongodb.net:27017,api-canada-shard-00-02-hiz94.mongodb.net:27017/test?ssl=true&replicaSet=API-Canada-shard-0&authSource=admin&retryWrites=true';
+//const urlMongoose = 'mongodb://canada:' + process.env.MONGO_ATLAS_PW + '@api-canada-shard-00-00-hiz94.mongodb.net:27017,api-canada-shard-00-01-hiz94.mongodb.net:27017,api-canada-shard-00-02-hiz94.mongodb.net:27017/test?ssl=true&replicaSet=API-Canada-shard-0&authSource=admin&retryWrites=true';
 
-mongoose.connect(urlMongoose);
-
-
+mongoose.connect(urlMongoose)
+    .then(e => console.log('State : Connected to database!'))
+    .catch(err => console.log('State : Cant\'t connect to Database', err));
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
