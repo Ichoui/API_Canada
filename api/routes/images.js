@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const mongoose = require('mongoose');
+
+const Image = require('../models/image');
 
 // GET
 router.get('/', (req, res, next) => {
@@ -10,13 +13,19 @@ router.get('/', (req, res, next) => {
 
 // POST
 router.post('/', (req, res, next) => {
-    const img = {
+    const image = new Image({
+        _id: mongoose.Types.ObjectId(),
         name: req.body.name,
         path: req.body.path
-    };
+    });
+
+    image.save().then(e => {
+        console.log(e);
+    });
+
     res.status(201).json({
         message: 'We can POST request in /images',
-        createdImage: img
+        createdImage: image
     })
 });
 
