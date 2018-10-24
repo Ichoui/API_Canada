@@ -7,10 +7,23 @@ const Image = require('../models/image');
 // GET
 router.get('/', (req, res, next) => {
     Image.find()
+        .select('name path _id')
         .exec()
         .then(docs => {
+            const response = {
+                method: "Methode GET",
+                count: docs.length,
+                images: docs.map(doc => {
+                    return {
+                        name: doc.name,
+                        path: doc.path,
+                        _id: doc._id
+                    }
+                })
+            };
+
             if (docs.length > 0) {
-                res.status(200).json(docs);
+                res.status(200).json(response);
             } else {
                 res.status(404).json({message: 'No data found here.'})
             }
@@ -33,7 +46,7 @@ router.post('/', (req, res, next) => {
         .then(result => {
             // console.log(result);
             res.status(201).json({
-                message: 'We can POST request in /images',
+                method: 'Methode POST',
                 createdImage: img
             });
         })
@@ -47,17 +60,22 @@ router.post('/', (req, res, next) => {
 router.get('/:imageId', (req, res, next) => {
     const id = req.params.imageId;
     Image.findById(id)
+        .select('name path _id')
         .exec()
-        .then(doc => {
-            // console.log("From Database", doc);
-            if (doc) {
-                res.status(200).json(doc);
+        .then(docs => {
+            const response = {
+                method: "Methode GET id",
+                image: docs
+            };
+
+            if (docs) {
+                res.status(200).json(response);
             } else {
-                res.status(404).json({message: 'No valid entry found !'});
+                res.status(404).json({message: 'This ID do not exist here.'})
             }
         })
         .catch(err => {
-            // console.log(err);
+            console.log(err);
             res.status(500).json({error: err});
         })
 });
