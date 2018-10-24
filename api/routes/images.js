@@ -6,9 +6,18 @@ const Image = require('../models/image');
 
 // GET
 router.get('/', (req, res, next) => {
-    res.status(200).json({
-        message: 'We can GET request in /images'
-    })
+    Image.find()
+        .exec()
+        .then(docs => {
+            if (docs.length > 0) {
+                res.status(200).json(docs);
+            } else {
+                res.status(404).json({message: 'No data found here.'})
+            }
+        })
+        .catch(err => {
+            res.status(404).json({error: err});
+        })
 });
 
 // POST
@@ -21,14 +30,17 @@ router.post('/', (req, res, next) => {
 
     img
         .save()
-        .then(e => {
+        .then(result => {
+            // console.log(result);
             res.status(201).json({
                 message: 'We can POST request in /images',
                 createdImage: img
-            })
-            console.log(err);
-        res.status(500).json({error: err})
-    });
+            });
+        })
+        .catch(err => {
+            // console.log(err);
+            res.status(500).json({error: err})
+        });
 });
 
 // GET ID
@@ -37,11 +49,30 @@ router.get('/:imageId', (req, res, next) => {
     Image.findById(id)
         .exec()
         .then(doc => {
-            console.log(doc);
-            res.status(200).json(doc);
+            // console.log("From Database", doc);
+            if (doc) {
+                res.status(200).json(doc);
+            } else {
+                res.status(404).json({message: 'No valid entry found !'});
+            }
         })
         .catch(err => {
-            console.log(err)
+            // console.log(err);
+            res.status(500).json({error: err});
+        })
+});
+
+//DELETE
+router.delete("/:imageId", (req, res, next) => {
+    const id = req.params.imageId;
+    Image.remove({_id: id})
+        .exec()
+        .then(result => {
+            res.status(200).json(result)
+        })
+        .catch(err => {
+            // console.log(err);
+            res.status(500).json({error: err});
         })
 });
 
