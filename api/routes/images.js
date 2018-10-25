@@ -1,22 +1,35 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const multer = require('multer');
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './images/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname);
+        // cb(null, new Date().toISOString().replace(/:/g, '-') );
+    }
+});
+const upload = multer({storage: storage});
 
+// Modeles
 const Image = require('../models/image');
 
 // GET
 router.get('/', (req, res, next) => {
     Image.find()
-        .select('name path _id')
+        .select('name path filepath _id')
         .exec()
         .then(docs => {
             const response = {
-                method: "Methode GET",
+                method: "Methode GET - Success",
                 count: docs.length,
                 images: docs.map(doc => {
                     return {
                         name: doc.name,
                         path: doc.path,
+                        filepath: doc.filepath,
                         _id: doc._id
                     }
                 })
@@ -34,11 +47,13 @@ router.get('/', (req, res, next) => {
 });
 
 // POST
-router.post('/', (req, res, next) => {
+router.post('/', upload.single('path'), (req, res, next) => {
+    console.log(req.file);
     const img = new Image({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
-        path: req.body.path
+        path: req.file.path,
+        filepath: req.protocol + "://" + req.headers.host + "/" + req.file.path
     });
 
     img
@@ -46,7 +61,7 @@ router.post('/', (req, res, next) => {
         .then(result => {
             // console.log(result);
             res.status(201).json({
-                method: 'Methode POST',
+                method: 'Methode POST - Success',
                 createdImage: img
             });
         })
@@ -64,7 +79,7 @@ router.get('/:imageId', (req, res, next) => {
         .exec()
         .then(docs => {
             const response = {
-                method: "Methode GET id",
+                method: "Methode GET id - Success",
                 image: docs
             };
 

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const morgan = require('morgan');
 const mongoose = require('mongoose');
-require('dotenv').config()
+require('dotenv').config();
 
 
 const imagesRoutes = require('./api/routes/images');
@@ -15,7 +15,10 @@ mongoose.connect(urlMongoose)
     .then(e => console.log('State : Connected to database!'))
     .catch(err => console.log('State : Cant\'t connect to Database', err));
 
+mongoose.Promise = global.Promise;
+
 app.use(morgan('dev'));
+app.use('/images', express.static('images')); // localhost:460/images/path = image
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -29,8 +32,8 @@ app.use((req, res, next) => {
     next();
 });
 
-
 app.use('/images', imagesRoutes);
+
 
 app.use((req, res, next) => {
     const error = new Error('Not Found !');
