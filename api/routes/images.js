@@ -16,6 +16,7 @@ const upload = multer({storage: storage});
 
 // Modeles
 const Image = require('../models/image');
+const arrayImage = require('../models/arrayImage');
 
 // GET
 router.get('/', (req, res, next) => {
@@ -52,13 +53,14 @@ router.get('/', (req, res, next) => {
 router.post('/', upload.array('path', 1000), (req, res, next) => {
     // console.log(req.file);
     const lengthReq = req.files.length;
+    let img;
 
     for (let i = 0; i < lengthReq; i++) {
-        const img = new Image({
+        img = new Image({
             _id: new mongoose.Types.ObjectId(),
             name: req.body.name,
             path: req.files[i].path,
-            filepath: req.protocol + "://" + os.hostname + "/" + req.files[i].path
+            filepath: req.protocol + "://" + req.headers.host + "/" + req.files[i].path
         });
 
         img.save()
@@ -70,8 +72,8 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
                 });
             })
             .catch(err => {
-                // console.log(err);
-                res.status(500).json({post_error: err})
+                console.log(err);
+                // res.status(500).json({post_error: err})
             });
     }
 });
@@ -101,17 +103,9 @@ router.get('/:imageId', (req, res, next) => {
 });
 
 // A DELETE QUAND APP EN SERVICE
-router.delete("/images-all", (req, res, next) => {
+router.delete("/images", (req, res, next) => {
     console.log(req);
-    Image.remove({_id: id})
-        .exec()
-        .then(result => {
-            res.status(200).json(result)
-        })
-        .catch(err => {
-            // console.log(err);
-            res.status(500).json({delete_error: err});
-        })
+    Image.remove({}).exec();
 });
 
 //DELETE ID
