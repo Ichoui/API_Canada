@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const os = require('os');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -48,7 +49,7 @@ router.get('/', (req, res, next) => {
 
 // POST
 // router.post('/', upload.single('path'), (req, res, next) => {
-router.post('/', upload.array('path', 5), (req, res, next) => {
+router.post('/', upload.array('path', 1000), (req, res, next) => {
     // console.log(req.file);
     const lengthReq = req.files.length;
 
@@ -57,7 +58,7 @@ router.post('/', upload.array('path', 5), (req, res, next) => {
             _id: new mongoose.Types.ObjectId(),
             name: req.body.name,
             path: req.files[i].path,
-            filepath: req.protocol + "://" + req.headers.host + "/" + req.files[i].path
+            filepath: req.protocol + "://" + os.hostname + "/" + req.files[i].path
         });
 
         img.save()
@@ -99,7 +100,21 @@ router.get('/:imageId', (req, res, next) => {
         })
 });
 
-//DELETE
+// A DELETE QUAND APP EN SERVICE
+router.delete("/images-all", (req, res, next) => {
+    console.log(req);
+    Image.remove({_id: id})
+        .exec()
+        .then(result => {
+            res.status(200).json(result)
+        })
+        .catch(err => {
+            // console.log(err);
+            res.status(500).json({delete_error: err});
+        })
+});
+
+//DELETE ID
 router.delete("/:imageId", (req, res, next) => {
     const id = req.params.imageId;
     Image.remove({_id: id})
