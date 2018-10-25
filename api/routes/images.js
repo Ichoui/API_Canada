@@ -42,33 +42,37 @@ router.get('/', (req, res, next) => {
             }
         })
         .catch(err => {
-            res.status(404).json({error: err});
+            res.status(404).json({get_error: err});
         })
 });
 
 // POST
-router.post('/', upload.single('path'), (req, res, next) => {
-    console.log(req.file);
-    const img = new Image({
-        _id: new mongoose.Types.ObjectId(),
-        name: req.body.name,
-        path: req.file.path,
-        filepath: req.protocol + "://" + req.headers.host + "/" + req.file.path
-    });
+// router.post('/', upload.single('path'), (req, res, next) => {
+router.post('/', upload.array('path', 5), (req, res, next) => {
+    // console.log(req.file);
+    const lengthReq = req.files.length;
 
-    img
-        .save()
-        .then(result => {
-            // console.log(result);
-            res.status(201).json({
-                method: 'Methode POST - Success',
-                createdImage: img
-            });
-        })
-        .catch(err => {
-            // console.log(err);
-            res.status(500).json({error: err})
+    for (let i = 0; i < lengthReq; i++) {
+        const img = new Image({
+            _id: new mongoose.Types.ObjectId(),
+            name: req.body.name,
+            path: req.files[i].path,
+            filepath: req.protocol + "://" + req.headers.host + "/" + req.files[i].path
         });
+
+        img.save()
+            .then(result => {
+                // console.log(result);
+                res.status(201).json({
+                    method: 'Methode POST - Success',
+                    createdImage: img
+                });
+            })
+            .catch(err => {
+                // console.log(err);
+                res.status(500).json({post_error: err})
+            });
+    }
 });
 
 // GET ID
@@ -91,7 +95,7 @@ router.get('/:imageId', (req, res, next) => {
         })
         .catch(err => {
             console.log(err);
-            res.status(500).json({error: err});
+            res.status(500).json({getid_error: err});
         })
 });
 
@@ -105,7 +109,7 @@ router.delete("/:imageId", (req, res, next) => {
         })
         .catch(err => {
             // console.log(err);
-            res.status(500).json({error: err});
+            res.status(500).json({delete_error: err});
         })
 });
 

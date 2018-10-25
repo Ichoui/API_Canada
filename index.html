@@ -9,16 +9,19 @@
 <body>
 <h1>API Canada</h1>
 
-<form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
-    <input type="file" name="userPhoto" multiple/>
+<form id="uploadForm" enctype="multipart/form-data" action="/images" method="post">
+    <input type="file" name="uploadedImage" multiple/>
     <input type="submit" value="Upload Image" name="submit">
+    <br>
     <label for="random">Voyons</label>
     <input type='text' id='random' name='random'>
     <span id="status"></span>
 </form>
 </body>
 
-<script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="resources/js/data-json.js"></script>
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery.form.min.js"></script>
+<!--<script src="resources/js/core.js"></script>-->
+<script src="resources/js/data-json.js"></script    >
 
 </html>
