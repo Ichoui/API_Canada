@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const os = require('os');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -49,7 +48,6 @@ router.get('/', (req, res, next) => {
 });
 
 // POST
-// router.post('/', upload.single('path'), (req, res, next) => {
 router.post('/', upload.array('path', 1000), (req, res, next) => {
     // console.log(req.file);
     const lengthReq = req.files.length;
@@ -102,10 +100,16 @@ router.get('/:imageId', (req, res, next) => {
         })
 });
 
-// A DELETE QUAND APP EN SERVICE
-router.delete("/images", (req, res, next) => {
-    console.log(req);
-    Image.remove({}).exec();
+// A COMMENTER QUAND APP EN SERVICE
+router.delete("/", (req, res, next) => {
+    Image.remove({})
+        .exec()
+        .then(result => {
+            res.status(200).json(result)
+        })
+        .catch(err => {
+            res.status(500).json({delete_error: err});
+        });
 });
 
 //DELETE ID
