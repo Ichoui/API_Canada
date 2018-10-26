@@ -97,10 +97,10 @@ router.get('/:imageId', (req, res, next) => {
         .catch(err => {
             console.log(err);
             res.status(500).json({getid_error: err});
-        })
+        });
 });
 
-// A COMMENTER QUAND APP EN SERVICE
+// A COMMENTER QUAND APP EN PROD
 router.delete("/", (req, res, next) => {
     Image.remove({})
         .exec()
