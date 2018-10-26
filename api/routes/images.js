@@ -63,14 +63,14 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
 
         img.save()
             .then(result => {
-                // console.log(result);
                 res.status(201).json({
                     method: 'Methode POST - Success',
-                    createdImage: img
+                    message: 'Number of images posted : ' + lengthReq,
+                    // createdImage: img
                 });
             })
             .catch(err => {
-                console.log(err);
+                // console.log(err);
                 // res.status(500).json({post_error: err})
             });
     }
@@ -105,7 +105,7 @@ router.delete("/", (req, res, next) => {
     Image.remove({})
         .exec()
         .then(result => {
-            res.status(200).json(result)
+            res.status(200).json({success: 'La table a été vidé', message: result})
         })
         .catch(err => {
             res.status(500).json({delete_error: err});

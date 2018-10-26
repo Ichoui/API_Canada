@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const imageArraySchema = mongoose.Schema({
-    test: Array
+    arrayImage: Array
 });
 
 module.exports = mongoose.model('imageArray', imageArraySchema);
