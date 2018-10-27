@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './images/');
+        cb(null, './images/banff');
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);
@@ -14,8 +14,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 // Modeles
-const Image = require('../models/image');
-const arrayImage = require('../models/arrayImage');
+const Image = require('../models/banff.model');
 
 // GET
 router.get('/', (req, res, next) => {

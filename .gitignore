@@ -4,8 +4,4 @@ node_modules/
 .idea/*
 *.iml
 
-*.mp4
-*.mp3
-*.jpg
-*.jpeg
-*.png
+images/

@@ -7,19 +7,19 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 
-const imagesRoutes = require('./api/routes/images');
+const banffRoutes = require('./api/routes/banff');
 
-const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW  + '@api-canada-hiz94.mongodb.net/test?retryWrites=true';
+const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW + '@api-canada-hiz94.mongodb.net/test?retryWrites=true';
 //const urlMongoose = 'mongodb://canada:' + process.env.MONGO_ATLAS_PW + '@api-canada-shard-00-00-hiz94.mongodb.net:27017,api-canada-shard-00-01-hiz94.mongodb.net:27017,api-canada-shard-00-02-hiz94.mongodb.net:27017/test?ssl=true&replicaSet=API-Canada-shard-0&authSource=admin&retryWrites=true';
 
-mongoose.connect(urlMongoose, { useNewUrlParser: true })
+mongoose.connect(urlMongoose, {useNewUrlParser: true})
     .then(e => console.log('State : Connected to database!'))
     .catch(err => console.log('State : Cant\'t connect to Database', err));
 
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
-app.use('/images', express.static('images')); // localhost:460/images/path = image
+app.use('/banff', express.static('banff')); // localhost:460/path = image
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -34,10 +34,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/images', imagesRoutes);
+app.use('/banff', banffRoutes);
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 app.use((req, res, next) => {
