@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const morgan = require('morgan');
+const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -19,6 +20,7 @@ mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use('/images', express.static('images')); // localhost:460/images/path = image
+
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -34,6 +36,9 @@ app.use((req, res, next) => {
 
 app.use('/images', imagesRoutes);
 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
 
 app.use((req, res, next) => {
     const error = new Error('Not Found !');

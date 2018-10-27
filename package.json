@@ -3,10 +3,13 @@
   "version": "0.0.1",
   "dependencies": {
     "jquery": "^3.3.1",
-    "mongoose": "^5.3.6"
+    "mongoose": "^5.3.6",
+    "node-sass": "^4.9.4"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "buildcss": "node-sass --include-path scss resources/scss/app.scss resources/css/app.css",
+    "watch": "nodemon -e scss -x \"npm run buildcss\""
   },
   "devDependencies": {
     "body-parser": "^1.18.3",
