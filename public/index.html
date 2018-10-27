@@ -2,26 +2,28 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>API Canada</title>
 </head>
+
 <body>
 <h1>API Images</h1>
+<hr>
+<h2>Banff Images</h2>
 
 <form id="uploadForm" enctype="multipart/form-data" action="/banff" method="post">
     <input type="file" name="path" multiple/>
     <input type="submit" value="Upload Image" name="submit">
     <br>
-    <label for="random">Voyons</label>
-    <input type='text' id='random' name='random'>
     <span id="status"></span>
 </form>
 </body>
 
-<script src="resources/js/jquery.min.js"></script>
+<script src="./resources/js/jquery.min.js"></script>
 <script src="resources/js/jquery.form.min.js"></script>
 <!--<script src="resources/js/core.js"></script>-->
-<script src="resources/js/data-json.js"></script    >
+<script src="resources/js/data-json.js"></script>
 
 </html>
