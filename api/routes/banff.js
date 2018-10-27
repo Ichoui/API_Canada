@@ -67,14 +67,14 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
                     message: 'Number of images posted : ' + lengthReq,
                     // createdImage: img
                 });
+
             })
             .catch(err => {
                 // console.log(err);
                 // res.status(500).json({post_error: err})
             });
     }
-    return res.redirect("back") // redirect to the last page
-
+    // res.redirect("back") // redirect to the last page
 });
 
 // GET ID

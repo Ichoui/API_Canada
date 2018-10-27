@@ -36,9 +36,12 @@ app.use((req, res, next) => {
 
 app.use('/banff', banffRoutes);
 
+app.use(express.static(path.join(__dirname, 'public'))); // declare le dossier public comme le dossier racine avec les ressources
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
+
+
 
 app.use((req, res, next) => {
     const error = new Error('Not Found !');
