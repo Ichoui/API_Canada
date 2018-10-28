@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     $('#uploadForm').submit(function (e) {
         e.preventDefault();
         $("#status").empty().text("File is uploading...");
