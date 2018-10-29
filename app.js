@@ -11,7 +11,6 @@ require('dotenv').config();
 const banffRoutes = require('./api/routes/banff');
 
 const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW + '@api-canada-hiz94.mongodb.net/test?retryWrites=true';
-//const urlMongoose = 'mongodb://canada:' + process.env.MONGO_ATLAS_PW + '@api-canada-shard-00-00-hiz94.mongodb.net:27017,api-canada-shard-00-01-hiz94.mongodb.net:27017,api-canada-shard-00-02-hiz94.mongodb.net:27017/test?ssl=true&replicaSet=API-Canada-shard-0&authSource=admin&retryWrites=true';
 
 mongoose.connect(urlMongoose, {useNewUrlParser: true})
     .then(e => console.log('State : Connected to database!'))
@@ -41,8 +40,6 @@ app.use(express.static(path.join(__dirname, 'public'))); // declare le dossier p
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
-
-
 
 app.use((req, res, next) => {
     const error = new Error('Not Found !');

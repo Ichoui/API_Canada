@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
+const fs = require('fs');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './images/banff');
@@ -13,8 +14,14 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
+
 // Modeles
 const Image = require('../models/banff.model');
+
+//Create folder
+fs.mkdir('./images/banff', err => {
+    console.log(err);
+});
 
 // GET
 router.get('/', (req, res, next) => {
