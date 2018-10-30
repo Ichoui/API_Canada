@@ -1,6 +1,6 @@
 const http = require('http');
 const app = require('./app');
-require('./config/auth-google');
+require('./config/auth/auth-google');
 
 const hostname = 'localhost';
 const port = process.env.PORT || 4620;

@@ -6,9 +6,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-
 // LOGIN GOOGLE
-const routeGoogle = require('./config/auth-route');
+const routeGoogle = require('./config/auth/auth-route');
 app.use('/', routeGoogle);
 // app.use('/google', routeGoogle);
 
@@ -25,7 +24,7 @@ mongoose.connect(urlMongoose, {useNewUrlParser: true})
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
-app.use('/banff', express.static('banff')); // localhost:4620/path = image
+// app.use('/banff', express.static('banff')); // localhost:4620/path = image
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -44,7 +43,7 @@ app.use((req, res, next) => {
 app.use('/banff', banffRoutes);
 app.use(express.static(path.join(__dirname, 'public'))); // declare le dossier public comme le dossier racine avec les ressources
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html')); // path pour index
 });
 
 app.use((req, res, next) => {
