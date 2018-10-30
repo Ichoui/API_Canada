@@ -8,16 +8,22 @@ passport.use(
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET
     }, (accesToken, refreshToken, profile, done) => {
-        console.log(profile);
-        // console.log(profile.photos);
-        new User({
-            googleId: profile.id,
-            firstname: profile.name.givenName,
-            lastname: profile.name.familyName,
-            photo: profile.photos
-        }).save().then((newUser) => {
-            console.log(newUser);
-        })
+        // console.log(profile);
+
+        User.findOne({googleId: profile.id}).then((currentUser) => {
+            if (currentUser) {
+                console.log('Welcome back, ' + currentUser.firstname + " " + currentUser.lastname + " :)")
+            } else {
+                new User({
+                    googleId: profile.id,
+                    firstname: profile.name.givenName,
+                    lastname: profile.name.familyName,
+                    photo: profile.photos[0].value
+                }).save().then((newUser) => {
+                    console.log("Nouvel utilisateur : " + newUser.firstname + " " + newUser.lastname);
+                });
+            }
+        });
     })
 );
 

@@ -27,11 +27,30 @@
     <br>
     <span id="status"></span>
 </form>
+
+<hr>
+
+<a href="/banff" class="btn btn-primary">GET</a>
+<a id="del" href="#" class="btn btn-primary">DELETE</a>
+
 </body>
 
 <script src="./resources/js/jquery.min.js"></script>
 <script src="resources/js/jquery.form.min.js"></script>
 <!--<script src="resources/js/core.js"></script>-->
 <script src="resources/js/data-json.js"></script>
+
+<script>
+    $('#del').on('click', e => {
+        console.log('PUTAIN');
+        $.ajax({
+            url: '/banff',
+            type: 'DELETE',
+            success: e => {
+                console.log('Database vidée')
+            }
+        });
+    });
+</script>
 
 </html>
