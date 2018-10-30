@@ -6,7 +6,9 @@
     "fs": "0.0.1-security",
     "jquery": "^3.3.1",
     "mongoose": "^5.3.6",
-    "node-sass": "^4.9.4"
+    "node-sass": "^4.9.4",
+    "passport": "^0.4.0",
+    "passport-google-oauth20": "^1.0.0"
   },
   "scripts": {
     "start": "nodemon server.js",

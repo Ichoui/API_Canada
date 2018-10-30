@@ -19,9 +19,7 @@ const upload = multer({storage: storage});
 const Image = require('../models/banff.model');
 
 //Create folder
-fs.mkdir('./images/banff', err => {
-    console.log(err);
-});
+fs.mkdir('./images/banff', err => {});
 
 // GET
 router.get('/', (req, res, next) => {

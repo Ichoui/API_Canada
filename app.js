@@ -4,22 +4,28 @@ const app = express();
 const morgan = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
-// const bootsrap = require('bootstrap');
 require('dotenv').config();
 
 
+// LOGIN GOOGLE
+const routeGoogle = require('./config/auth-route');
+app.use('/', routeGoogle);
+// app.use('/google', routeGoogle);
+
+
+// ROUTES
 const banffRoutes = require('./api/routes/banff');
 
+// DATABASE
 const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW + '@api-canada-hiz94.mongodb.net/test?retryWrites=true';
 
 mongoose.connect(urlMongoose, {useNewUrlParser: true})
     .then(e => console.log('State : Connected to database!'))
     .catch(err => console.log('State : Cant\'t connect to Database', err));
-
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
-app.use('/banff', express.static('banff')); // localhost:460/path = image
+app.use('/banff', express.static('banff')); // localhost:4620/path = image
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -34,8 +40,8 @@ app.use((req, res, next) => {
     next();
 });
 
+//  ACCES AUX PATHS
 app.use('/banff', banffRoutes);
-
 app.use(express.static(path.join(__dirname, 'public'))); // declare le dossier public comme le dossier racine avec les ressources
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
