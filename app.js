@@ -7,8 +7,10 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 // LOGIN GOOGLE
+const passportSetup = require('./config/auth/auth-google');
 const routeGoogle = require('./config/auth/auth-route');
 app.use('/', routeGoogle);
+app.use('/auth', routeGoogle);
 // app.use('/google', routeGoogle);
 
 
