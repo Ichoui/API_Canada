@@ -4,17 +4,32 @@ const app = express();
 const morgan = require('morgan');
 const path = require('path');
 const mongoose = require('mongoose');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 require('dotenv').config();
+
+
+// COOKIE
+app.use(cookieSession({
+    maxAge: 24*60*60*1000,
+    keys: [process.env.COOKIE_KEY]
+}));
+// init
+app.use(passport.initialize());
+app.use(passport.session());
 
 // LOGIN GOOGLE
 const passportSetup = require('./config/auth/auth-google');
 const routeGoogle = require('./config/auth/auth-route');
+const profileRoute = require('./config/routes/profile-route');
+
 app.use('/', routeGoogle);
+app.use('/', profileRoute);
 app.use('/auth', routeGoogle);
 // app.use('/google', routeGoogle);
 
 
-// ROUTES
+// ROUTES API images
 const banffRoutes = require('./api/routes/banff');
 
 // DATABASE
@@ -41,6 +56,7 @@ app.use((req, res, next) => {
     next();
 });
 
+
 //  ACCES AUX PATHS
 app.use('/banff', banffRoutes);
 app.use(express.static(path.join(__dirname, 'public'))); // declare le dossier public comme le dossier racine avec les ressources
@@ -48,6 +64,7 @@ app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html')); // path pour index
 });
 
+// GESTION DES ERREURS
 app.use((req, res, next) => {
     const error = new Error('Not Found !');
     error.status = 404;

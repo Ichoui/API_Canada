@@ -31,6 +31,7 @@ router.get('/', (req, res, next) => {
                 method: "Methode GET - Success",
                 count: docs.length,
                 images: docs.map(doc => {
+                    console.log(doc);
                     return {
                         name: doc.name,
                         path: doc.path,
@@ -53,14 +54,14 @@ router.get('/', (req, res, next) => {
 
 // POST
 router.post('/', upload.array('path', 1000), (req, res, next) => {
-    // console.log(req.file);
+    console.log(req.files);
     const lengthReq = req.files.length;
     let img;
 
     for (let i = 0; i < lengthReq; i++) {
         img = new Image({
             _id: new mongoose.Types.ObjectId(),
-            name: req.body.name,
+            name: req.files[i].filename,
             path: req.files[i].path,
             filepath: req.protocol + "://" + req.headers.host + "/" + req.files[i].path
         });
