@@ -11,7 +11,7 @@ require('dotenv').config();
 
 // COOKIE
 app.use(cookieSession({
-    maxAge: 24*60*60*1000,
+    maxAge: 24 * 60 * 60 * 1000,
     keys: [process.env.COOKIE_KEY]
 }));
 // init
@@ -22,12 +22,6 @@ app.use(passport.session());
 const passportSetup = require('./config/auth/auth-google');
 const routeGoogle = require('./config/auth/auth-route');
 const profileRoute = require('./config/routes/profile-route');
-
-app.use('/', routeGoogle);
-app.use('/', profileRoute);
-app.use('/auth', routeGoogle);
-// app.use('/google', routeGoogle);
-
 
 // ROUTES API images
 const banffRoutes = require('./api/routes/banff');
@@ -41,7 +35,6 @@ mongoose.connect(urlMongoose, {useNewUrlParser: true})
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
-// app.use('/banff', express.static('banff')); // localhost:4620/path = image
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -56,13 +49,24 @@ app.use((req, res, next) => {
     next();
 });
 
+//VIEW ENGINE
+app.set('view engine', 'ejs'); //préchargement engine
+app.set('views', path.join(__dirname, '/public/')); // changement du dossier views
 
-//  ACCES AUX PATHS
-app.use('/banff', banffRoutes);
+
+//  ACCES AUX PATHS API & Index
 app.use(express.static(path.join(__dirname, 'public'))); // declare le dossier public comme le dossier racine avec les ressources
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/index.html')); // path pour index
+    res.render('index')
 });
+app.use('/banff', banffRoutes);
+
+// Paths google et authentification
+app.use('/', routeGoogle);
+app.use('/', profileRoute);
+app.use('/auth', routeGoogle);
+// app.use('/google', routeGoogle);
+
 
 // GESTION DES ERREURS
 app.use((req, res, next) => {

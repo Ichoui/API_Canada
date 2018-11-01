@@ -1,9 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const path = require('path');
 
-router.get('/', (req,res) => {
-        res.send('you are logged in ' + req.user)
+const authCheck = (req, res, next) => {
+    if (!req.user) {
+        // if user is not logged
+        res.redirect('/');
+    } else {
+        // if loggedin
+        next();
+    }
+};
+
+router.get('/profile', authCheck, (req, res) => {
+    // res.send('you are logged in ' + req.user.firstname)
+     console.log('you are logged in ' + req.user.firstname);
+    res.render('profile')
+
 });
 
 module.exports = router;
