@@ -8,7 +8,6 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 require('dotenv').config();
 
-
 // COOKIE
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,

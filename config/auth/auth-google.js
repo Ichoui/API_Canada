@@ -19,11 +19,10 @@ passport.use(
         clientID: process.env.CLIENT_ID,
         clientSecret: process.env.CLIENT_SECRET
     }, (accesToken, refreshToken, profile, done) => {
-        // console.log(profile);
 
         User.findOne({googleId: profile.id}).then((currentUser) => {
             if (currentUser) {
-                console.log('Welcome back, ' + currentUser.firstname + " " + currentUser.lastname + " :)")
+                console.log('Welcome back, ' + currentUser.firstname + " " + currentUser.lastname + " :)");
                 done(null, currentUser);
             } else {
                 new User({
@@ -37,6 +36,7 @@ passport.use(
                 });
             }
         });
+
     })
 );
 
