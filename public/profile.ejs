@@ -12,7 +12,7 @@
 
 <body>
 <div class="nav navbar">
-    <h1 class="title">API Images</h1>
+    <h1 class="title">API Images<br><span> - <%= user.firstname %></span></h1>
     <div class="nav-right">
         <img src="<%= user.photo %>" class="google-img">
         <a href="/logout" id="connect" class=" btn-cool">Logout</a>
@@ -22,19 +22,21 @@
 
 <% if (user.googleId === admin) { %>
 
-
-
-<div class="text-center">Welcome home, <%= user.firstname %></div>
-<h2>Banff Images</h2>
-<form id="post" enctype="multipart/form-data" action="/banff" method="post">
-    <input type="file" name="path" multiple/><br>
-    <button type="submit" name="submit" class="btn btn-primary mt-3 mb-3">POST Images</button>
-</form>
-
-<a id="get" href="#" class="btn btn-primary mt-3 mb-3">GET</a>
-<a id="del" href="#" class="btn btn-primary mt-3 mb-3">DELETE</a>
-<hr>
-<div class="mt-3 mb-3 text-center"><b>Status requête</b><br> <span id="status"></span></div>
+<div class="blocks-block">
+    <div class="block">
+        <h2 class="text-center">Banff</h2>
+        <form id="post" enctype="multipart/form-data" action="/banff" method="post">
+            <input type="file" name="path" id="path" style="display: none;" multiple/><br>
+            <label for="path" class="btn-cool">Chose your image(s)</label>
+            <button type="submit" name="submit" class="btn-cool">POST Images</button>
+        </form>
+        <div class="block-a">
+            <a id="get" href="#" class="btn-cool">GET</a>
+            <a id="del" href="#" class="btn-cool">DELETE</a>
+        </div>
+    </div>
+</div>
+<div class="text-center"><b>Status requête</b><br> <span id="status"></span></div>
 <% } else { %>
 <div class="text-center">Welcome, <%= user.firstname %></div>
 <div>You are not logged as Admin</div>

@@ -38,4 +38,10 @@ $(document).ready(function () {
         });
     });
 
+    function getRandomInt(max, min) {
+       return Math.floor(Math.random() * max) + min;
+    }
+    const rand = getRandomInt(3, 1);
+    $('body').addClass('body'+rand)
+
 });
