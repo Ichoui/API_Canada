@@ -22,7 +22,7 @@
       "port": "4620",
       "ref": "origin/master",
       "repo": "git@gitlab.com:Ichoui/API_Canada.git",
-      "path": "/var/www/API/",
+      "path": "/var/www/API",
       "ssh_options": "StrictHostKeyChecking=no",
       "pre-setup": "apt-get install git",
       "post-setup": "ls -la",
