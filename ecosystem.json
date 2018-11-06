@@ -19,8 +19,9 @@
     "production": {
       "user": "root",
       "host": [
-        "127.0.0.1"
+        "176.158.217.80", "127.0.0.1"
       ],
+      "port": "4620",
       "ref": "origin/master",
       "repo": "git@gitlab.com:Ichoui/API_Canada.git",
       "path": "/var/www/API",
