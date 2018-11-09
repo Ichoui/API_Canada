@@ -14,12 +14,11 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage: storage});
 
+//Create folder (Laisser le dossier images à la racine)
+fs.mkdir('./images/banff', err => {});
 
 // Modeles
 const Image = require('../models/banff.model');
-
-//Create folder
-fs.mkdir('./images/banff', err => {});
 
 // GET
 router.get('/', (req, res, next) => {
@@ -54,6 +53,8 @@ router.get('/', (req, res, next) => {
 
 // POST
 router.post('/', upload.array('path', 1000), (req, res, next) => {
+
+
     console.log(req.files);
     const lengthReq = req.files.length;
     let img;
