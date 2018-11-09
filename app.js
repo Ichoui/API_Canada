@@ -34,7 +34,7 @@ mongoose.connect(urlMongoose, {useNewUrlParser: true})
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, 'images'))); // donne accès au dossier image techniquement
+app.use(express.static(path.join(__dirname, 'images'))); // donne le droit d'accès au dossier au dossier images (pour les images de l'api)
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
@@ -54,7 +54,7 @@ app.set('views', path.join(__dirname, '/public/')); // changement du dossier vie
 
 
 //  ACCES AUX PATHS API & Index
-app.use(express.static(path.join(__dirname, 'public'))); // declare le dossier public comme le dossier racine avec les ressources
+app.use(express.static(path.join(__dirname, 'public'))); // donne les droits d'accès au dossier public (pour les resources)
 app.get('/', function (req, res) {
     res.render('index')
 });
