@@ -53,18 +53,18 @@ router.get('/', (req, res, next) => {
 
 // POST
 router.post('/', upload.array('path', 1000), (req, res, next) => {
-
-
     console.log(req.files);
     const lengthReq = req.files.length;
     let img;
 
     for (let i = 0; i < lengthReq; i++) {
+        const mypath = req.files[i].path;
+        const splittedUrl = mypath.split('\\');
         img = new Image({
             _id: new mongoose.Types.ObjectId(),
             name: req.files[i].filename,
             path: req.files[i].path,
-            filepath: req.protocol + "://" + req.headers.host + "/" + req.files[i].path
+            filepath: req.protocol + "://" + req.headers.host + "/" + splittedUrl[1]+ "/" + splittedUrl[2]
         });
 
         img.save()
