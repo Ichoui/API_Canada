@@ -6316,16 +6316,16 @@ body {
   color: white; }
 
 .body1 {
-  background: url("../img/helmet-mask.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background: #131524 url("../img/helmet-mask.jpg") no-repeat; }
 
 .body2 {
-  background: url("../img/skull-mask.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background: #131524 url("../img/skull-mask.jpg") no-repeat; }
 
 .body3 {
-  background: url("../img/samurai-mask.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background: #131524 url("../img/samurai-mask.jpg") no-repeat; }
 
 .nav {
   top: 10px; }
