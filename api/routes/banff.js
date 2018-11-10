@@ -59,14 +59,8 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
     let img;
 
     for (let i = 0; i < lengthReq; i++) {
-        let splittedUrl;
-        let mypath;
-            mypath = req.files[i].path;
-            splittedUrl = mypath.split('/'); // Prend un / en dev et \ en prod
-        // if (req.headers.host === 'localhost:4620') {
-        // } else {
-        //     splittedUrl = mypath.split('\\'); // Prend un / en dev et \ en prod
-        // }
+        let mypath = req.files[i].path;
+        let splittedUrl = mypath.split('/'); // Prend un / en dev et \ en prod
         console.log('---');
         console.log(mypath);
         console.log(splittedUrl[1]);
