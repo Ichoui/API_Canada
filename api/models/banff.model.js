@@ -7,4 +7,5 @@ const imageSchema = mongoose.Schema({
     filepath: {type: String, required: true}
 });
 
-module.exports = mongoose.model('Image', imageSchema);
+// Ici, la variable d'environnement représente le nom de la table (gestion prod / dev) ==> voir dans .env
+module.exports = mongoose.model("banff", imageSchema);

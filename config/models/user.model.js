@@ -7,4 +7,5 @@ const userSchema = new mongoose.Schema({
     photo: String
 });
 
+// Ici, user représente la table users
 module.exports = mongoose.model('user', userSchema);
