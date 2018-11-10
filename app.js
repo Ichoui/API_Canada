@@ -26,7 +26,8 @@ const profileRoute = require('./config/routes/profile-route');
 const banffRoutes = require('./api/routes/banff');
 
 // DATABASE
-const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW + '@api-canada-hiz94.mongodb.net/' + process.env.MONGO_DATABASE + '?retryWrites=true';
+const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW +
+    '@api-canada-hiz94.mongodb.net/' + process.env.MONGO_DATABASE + '?retryWrites=true';
 
 mongoose.connect(urlMongoose, {useNewUrlParser: true})
     .then(e => console.log('State : Connected to database!'))
