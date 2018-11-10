@@ -16,6 +16,7 @@
   "scripts": {
     "start":"pm2 start server.js && pm2 logs",
     "stop":"pm2 stop server.js",
+    "start_prod":"pm2 start server.js",
     "nodemon": "nodemon server.js",
     "restart":"pm2 restart server.js",
     "logs": "pm2 logs",
