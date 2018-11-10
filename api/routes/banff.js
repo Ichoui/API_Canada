@@ -110,7 +110,7 @@ router.get('/:imageId', (req, res, next) => {
         });
 });
 
-// A COMMENTER QUAND APP EN PROD
+// DELETE ALL IMAGES
 router.delete("/", (req, res, next) => {
     Image.remove({})
         .exec()

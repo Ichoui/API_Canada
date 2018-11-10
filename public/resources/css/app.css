@@ -6317,20 +6317,29 @@ body {
 
 .body1 {
   background-size: cover;
-  background: #131524 url("../img/helmet-mask.jpg") center top no-repeat; }
+  background: #131524 url("../img/helmet-mask.jpg") center 9% no-repeat; }
 
 .body2 {
   background-size: cover;
-  background: #131524 url("../img/skull-mask.jpg") center top no-repeat; }
+  background: #131524 url("../img/skull-mask.jpg") center 9% no-repeat; }
 
 .body3 {
   background-size: cover;
-  background: #131524 url("../img/samurai-mask.jpg") center top no-repeat; }
+  background: #131524 url("../img/samurai-mask.jpg") center 9% no-repeat; }
+
+.body4 {
+  background-size: cover;
+  background: #131524 url("../img/pandoras-mask.jpg") center 9% no-repeat; }
 
 .nav {
   top: 10px; }
+  .nav img.logo {
+    position: absolute;
+    width: 140px;
+    top: 0; }
   .nav h1.title {
     text-transform: uppercase;
+    margin-left: 150px;
     font-size: 1.5em; }
   .nav .nav-right {
     position: absolute;
@@ -6375,3 +6384,26 @@ body {
   .blocks-block .block-a {
     text-align: center;
     margin-top: 20px; }
+
+.overlay-del {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); }
+  .overlay-del .popin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    color: #111e39;
+    height: 120px;
+    width: 55vh;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px; }
+    .overlay-del .popin .yes, .overlay-del .popin .no {
+      background-color: #111e39; }
