@@ -15,12 +15,12 @@
   },
   "scripts": {
     "start":"pm2 start server.js && pm2 logs",
-    "restart":"pm2 restart server.js",
     "stop":"pm2 stop server.js",
+    "restart":"pm2 restart server.js",
     "logs": "pm2 logs",
     "logsraw": "pm2 logs --raw",
     "monitor": "pm2 monit",
-    "nodemon_start": "nodemon server.js",
+    "start-nd": "nodemon server.js",
     "buildcss": "node-sass --include-path scss public/resources/scss/app.scss public/resources/css/app.css",
     "watch": "nodemon -e scss -x \"npm run buildcss\""
   },

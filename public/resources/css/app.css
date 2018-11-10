@@ -6317,15 +6317,15 @@ body {
 
 .body1 {
   background-size: cover;
-  background: #131524 url("../img/helmet-mask.jpg") no-repeat; }
+  background: #131524 url("../img/helmet-mask.jpg") center top no-repeat; }
 
 .body2 {
   background-size: cover;
-  background: #131524 url("../img/skull-mask.jpg") no-repeat; }
+  background: #131524 url("../img/skull-mask.jpg") center top no-repeat; }
 
 .body3 {
   background-size: cover;
-  background: #131524 url("../img/samurai-mask.jpg") no-repeat; }
+  background: #131524 url("../img/samurai-mask.jpg") center top no-repeat; }
 
 .nav {
   top: 10px; }

@@ -15,7 +15,8 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 //Create folder (Laisser le dossier images à la racine)
-fs.mkdir('./images/banff', err => {});
+fs.mkdir('./images/banff', err => {
+});
 
 // Modeles
 const Image = require('../models/banff.model');
@@ -58,15 +59,22 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
     let img;
 
     for (let i = 0; i < lengthReq; i++) {
-        const mypath = req.files[i].path;
+        let splittedUrl;
+        let mypath;
+            mypath = req.files[i].path;
+        if (req.headers.host === 'localhost:4620') {
+            splittedUrl = mypath.split('/'); // Prend un / en dev et \ en prod
+        } else {
+            splittedUrl = mypath.split('\\'); // Prend un / en dev et \ en prod
+        }
+        console.log('---');
         console.log(mypath);
-        const splittedUrl = mypath.split('\\'); // Prend un / en dev et \ en prod
         console.log(splittedUrl[1]);
+        console.log('---');
         img = new Image({
             _id: new mongoose.Types.ObjectId(),
             name: req.files[i].filename,
-            path: req.files[i].path,
-            filepath: req.protocol + "://" + req.headers.host + "/" + splittedUrl[1]+ "/" + splittedUrl[2]
+            filepath: req.protocol + "://" + req.headers.host + "/" + splittedUrl[1] + "/" + splittedUrl[2]
         });
 
         img.save()
