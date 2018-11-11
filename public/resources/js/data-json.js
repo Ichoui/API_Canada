@@ -25,18 +25,30 @@ $(document).ready(function () {
                 $("#status").empty().html(e.method + " <br> Nombre d'images en base : " + e.count +
                     "<br><button class='show-images btn-cool mt-1'>Afficher les images</button>");
 
-                // Popin pour afficher toutes les images
+                // Popin pour afficher toutes les images et les supprimer
                 $('.show-images').on('click', e, f => {
                     $('.overlay-img').show();
                     for (let i = 0; i < e.images.length; i++) {
+                        let divglobal = $('<div></div>')
+                            .attr('id', 'glob' + [i])
+                            .attr('class', 'glob');
+
+                        let delImg = $('<span>Supprimer</span>')
+                            .attr('id', 'img-' + e.images[i]._id)
+                            .attr('class', 'del-img b del-img-' + [i]);
+
                         let myImg = $('<img src="" class="myimage">')
-                            .attr('id', 'myimage' + [i])
                             .attr('src', e.images[i].filepath)
                             .attr('title', 'Fichier : ' + e.images[i].name);
 
-                        myImg.appendTo('.images');
+                        divglobal.appendTo('.images');
+                        myImg.appendTo('#glob' + [i]);
+                        delImg.appendTo('#glob' + [i]);
                     }
 
+                    $('.del-img').on('click', e => {
+                        console.log($(this));
+                    });
                 });
             },
             error: e => {

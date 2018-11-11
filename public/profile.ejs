@@ -39,6 +39,7 @@
     <div class="text-center"><b>Status requête</b><br>
         <div id="status"></div>
     </div>
+
     <div class='overlay-img'>
         <div class='popin'>
             <div class="scrollable-part">
@@ -49,19 +50,20 @@
             </div>
         </div>
     </div>
+
+    <div class="overlay-del">
+        <div class="popin">
+            <p>Est-ce vous voulez vraiment supprimer la totalité de vos images en base ?</p>
+            <div class="action-man">
+                <a href="#" class="yes btn-cool">OUI</a>
+                <a href="#" class="no btn-cool">NON</a>
+            </div>
+        </div>
+    </div>
 <% } else { %>
     <div class="text-center">Welcome, <%= user.firstname %><br> You are not logged as Admin</div>
 <% } %>
 
-<div class="overlay-del">
-    <div class="popin">
-        <p>Est-ce vous voulez vraiment supprimer la totalité de vos images en base ?</p>
-        <div class="action-man">
-            <a href="#" class="yes btn-cool">OUI</a>
-            <a href="#" class="no btn-cool">NON</a>
-        </div>
-    </div>
-</div>
 </body>
 
 <script src="/resources/js/jquery.min.js"></script>

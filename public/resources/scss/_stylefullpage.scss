@@ -1,3 +1,5 @@
+$dark-blue: #111e39;
+
 body {
   color: white;
 }
@@ -106,32 +108,56 @@ body {
     left: 50%;
     top: 50%;
     background: rgba(255, 255, 255, 0.9);
-    color: #111e39;
+    color: $dark-blue;
     text-align: center;
     padding: 20px;
     border-radius: 5px;
-    .images {
-      .myimage {
-        width: 100px;
-        margin: 5px;
-        &:hover {
-          cursor: help;
-        }
-      }
-    }
     .action-man {
       margin: 5px auto 0;
       .yes, .no, .closed {
-        background-color: #111e39;
+        background-color: $dark-blue;
       }
     }
   }
 }
 
-.scrollable-part {
-  max-height: 65vh;
-  overflow-x: auto;
-  margin-bottom: 20px;
+.overlay-img {
+  .images {
+    display: flex;
+    flex-wrap: wrap;
+    .glob {
+      position: relative;
+      margin: 18px 5px;
+      .myimage {
+        width: 100px;
+        &:hover {
+          cursor: help;
+        }
+      }
+      .del-img {
+        position: absolute;
+        width: 100%;
+        color: $dark-blue;
+        border: 1px solid;
+        background: rgba(white, 0.8);
+        z-index: 2;
+        font-size: 12px;
+        bottom: -20px;
+        left: 0;
+        &:hover {
+          color: white;
+          background-color: $dark-blue;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .scrollable-part {
+    max-height: 65vh;
+    overflow-x: auto;
+    margin-bottom: 20px;
+  }
 }
 
 @media all and (max-width: 768px) {
