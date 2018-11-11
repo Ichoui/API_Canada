@@ -1,5 +1,4 @@
 body {
-
   color: white;
 }
 
@@ -133,4 +132,10 @@ body {
   max-height: 65vh;
   overflow-x: auto;
   margin-bottom: 20px;
+}
+
+@media all and (max-width: 768px) {
+  body {
+    background: #131524 url("../img/hero_mobile.jpg") center 9% no-repeat !important;
+  }
 }

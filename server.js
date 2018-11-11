@@ -1,11 +1,15 @@
 const http = require('http');
 const app = require('./app');
 
-const hostname = "localhost";
-const port = process.env.PORT || 4620;
+const hostname = process.env.HOSTNAME;
+const port = process.env.PORT;
 
 const server = http.createServer(app);
 
 app.listen(port, hostname, function () {
-    console.log("Mon serveur fonctionne sur http://" + hostname + ":" + port);
+    if (hostname === 'localhost') {
+        console.log("Mon serveur fonctionne sur http://" + hostname + ":" + port);
+    } else {
+        console.log("Mon serveur fonctionne sur http://" + hostname);
+    }
 });
