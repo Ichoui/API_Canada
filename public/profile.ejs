@@ -36,7 +36,19 @@
             </div>
         </div>
     </div>
-    <div class="text-center"><b>Status requête</b><br> <span id="status"></span></div>
+    <div class="text-center"><b>Status requête</b><br>
+        <div id="status"></div>
+    </div>
+    <div class='overlay-img'>
+        <div class="scrollable-part">
+            <div class='popin'>
+                <div class="images"></div>
+                <div class="action-man">
+                    <a href='#' class='no btn-cool'>Fermer</a>
+                </div>
+            </div>
+        </div>
+    </div>
 <% } else { %>
     <div class="text-center">Welcome, <%= user.firstname %><br> You are not logged as Admin</div>
 <% } %>
@@ -44,8 +56,10 @@
 <div class="overlay-del">
     <div class="popin">
         <p>Est-ce vous voulez vraiment supprimer la totalité de vos images en base ?</p>
-        <a href="#" class="yes btn-cool">OUI</a>
-        <a href="#" class="no btn-cool">NON</a>
+        <div class="action-man">
+            <a href="#" class="yes btn-cool">OUI</a>
+            <a href="#" class="no btn-cool">NON</a>
+        </div>
     </div>
 </div>
 </body>

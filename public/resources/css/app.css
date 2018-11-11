@@ -6385,7 +6385,7 @@ body {
     text-align: center;
     margin-top: 20px; }
 
-.overlay-del {
+.overlay-del, .overlay-img {
   display: none;
   position: absolute;
   top: 0;
@@ -6393,17 +6393,22 @@ body {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5); }
-  .overlay-del .popin {
+  .overlay-del .popin, .overlay-img .popin {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
     background: rgba(255, 255, 255, 0.9);
     color: #111e39;
-    height: 120px;
-    width: 55vh;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px; }
-    .overlay-del .popin .yes, .overlay-del .popin .no {
-      background-color: #111e39; }
+    .overlay-del .popin .images .myimage, .overlay-img .popin .images .myimage {
+      width: 100px;
+      margin: 5px; }
+      .overlay-del .popin .images .myimage:hover, .overlay-img .popin .images .myimage:hover {
+        cursor: help; }
+    .overlay-del .popin .action-man, .overlay-img .popin .action-man {
+      margin: 5px auto 0; }
+      .overlay-del .popin .action-man .yes, .overlay-del .popin .action-man .no, .overlay-del .popin .action-man .closed, .overlay-img .popin .action-man .yes, .overlay-img .popin .action-man .no, .overlay-img .popin .action-man .closed {
+        background-color: #111e39; }

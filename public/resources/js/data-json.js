@@ -22,7 +22,24 @@ $(document).ready(function () {
             type: 'GET',
             success: e => {
                 console.log(e);
-                $("#status").empty().html(e.method + " <br> Nombre d'images en base : " + e.count);
+                $("#status").empty().html(e.method + " <br> Nombre d'images en base : " + e.count +
+                    "<br><button class='show-images btn-cool mt-1'>Afficher les images</button>");
+
+                // Popin pour afficher toutes les images
+                $('.show-images').on('click', e, f => {
+                    $('.overlay-img').show();
+                    for (let i = 0; i < e.images.length; i++) {
+
+                        let myImg = $('<img src="" class="myimage">')
+                            .attr('id', 'myimage' + [i])
+                            .attr('src', e.images[i].filepath)
+                            .attr('title', 'Fichier : ' + e.images[i].name);
+
+                        myImg.appendTo('.images');
+                        console.log(myImg);
+                    }
+
+                });
             },
             error: e => {
                 $("#status").empty().html("Il y a 0 images en base actuellement");
@@ -45,15 +62,19 @@ $(document).ready(function () {
 
     $('.no').on('click', e => {
         $('.overlay-del').hide();
+        $('.overlay-img').hide();
+        $('.images').empty();
     });
 
     $('#del').on('click', e => {
         $('.overlay-del').show();
     });
 
+
     function getRandomInt(max, min) {
-       return Math.floor(Math.random() * max) + min;
+        return Math.floor(Math.random() * max) + min;
     }
+
     const rand = getRandomInt(4, 1);
-    $('body').addClass('body'+rand)
+    $('body').addClass('body' + rand)
 });
