@@ -13,15 +13,19 @@ const storage = multer.diskStorage({
     }
 });
 
-const fileFilterType = (req, file, cb) => {
-    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png' || file.mimetype === 'image/gif' || file.mimetype === 'image/svg') {
         cb(null, true)
     }
     else {
-        cb(null, false)
+        // cb(null, false)
+        cb(new Error(req), false)
     }
 };
-const upload = multer({storage: storage});
+const upload = multer({
+    storage: storage,
+    fileFilter: fileFilter
+});
 
 //Create folder (Laisser le dossier images à la racine)
 fs.mkdir('./images/banff', err => {

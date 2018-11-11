@@ -2,14 +2,14 @@ $(document).ready(function () {
 
     $('#post').submit(function (e) {
         e.preventDefault();
-        $("#status").empty().text("Les fichiers sont en cours d'upload ...");
+        $("#status").empty().html("Les fichiers sont en cours d'upload ... <img src='/resources/img/loader.gif' alt='loader'>");
         $(this).ajaxSubmit({
             success: function (e) {
                 console.log(e);
                 $("#status").empty().text(e.message);
             },
             error: function (xhr) {
-                status('Error: ' + xhr.status);
+                $('#status').html('Erreur ' + xhr.status + '<br>' + 'Seules les images au format JPG/JPEG et PNG sont acceptées.');
             }
         });
         return false;
@@ -29,14 +29,12 @@ $(document).ready(function () {
                 $('.show-images').on('click', e, f => {
                     $('.overlay-img').show();
                     for (let i = 0; i < e.images.length; i++) {
-
                         let myImg = $('<img src="" class="myimage">')
                             .attr('id', 'myimage' + [i])
                             .attr('src', e.images[i].filepath)
                             .attr('title', 'Fichier : ' + e.images[i].name);
 
                         myImg.appendTo('.images');
-                        console.log(myImg);
                     }
 
                 });
