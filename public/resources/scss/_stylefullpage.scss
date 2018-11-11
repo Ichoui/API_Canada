@@ -129,9 +129,8 @@ body {
   }
 }
 
-.overlay-img {
-  .scrollable-part {
-
-  }
-
+.scrollable-part {
+  max-height: 65vh;
+  overflow-x: auto;
+  margin-bottom: 20px;
 }

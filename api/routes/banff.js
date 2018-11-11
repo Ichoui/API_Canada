@@ -12,6 +12,15 @@ const storage = multer.diskStorage({
         // cb(null, new Date().toISOString().replace(/:/g, '-') );
     }
 });
+
+const fileFilterType = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/jpg' || file.mimetype === 'image/png') {
+        cb(null, true)
+    }
+    else {
+        cb(null, false)
+    }
+};
 const upload = multer({storage: storage});
 
 //Create folder (Laisser le dossier images à la racine)

@@ -6412,3 +6412,8 @@ body {
       margin: 5px auto 0; }
       .overlay-del .popin .action-man .yes, .overlay-del .popin .action-man .no, .overlay-del .popin .action-man .closed, .overlay-img .popin .action-man .yes, .overlay-img .popin .action-man .no, .overlay-img .popin .action-man .closed {
         background-color: #111e39; }
+
+.scrollable-part {
+  max-height: 65vh;
+  overflow-x: auto;
+  margin-bottom: 20px; }
