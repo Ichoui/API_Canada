@@ -73,7 +73,14 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
 
     for (let i = 0; i < lengthReq; i++) {
         let mypath = req.files[i].path;
-        let splittedUrl = mypath.split('/'); // non (ou faut voir si c'est pas windows .. ? split('\\')
+        let splittedUrl;
+
+        // Si on a des \\ alors on découpe l'url en fonction des \ sinon on découpe en fonction des /
+        if (mypath.indexOf('\\') >= 1) {
+            splittedUrl = mypath.split('\\'); // non (ou faut voir si c'est pas windows .. ? split('\\')
+        } else {
+            splittedUrl = mypath.split('/'); // non (ou faut voir si c'est pas windows .. ? split('\\')
+        }
         // console.log(mypath);
         // console.log(splittedUrl[1]);
         img = new Image({
