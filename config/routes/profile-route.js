@@ -15,8 +15,10 @@ const authCheck = (req, res, next) => {
 
 router.get('/profile', authCheck, (req, res) => {
     // res.send('you are logged in ' + req.user.firstname)
-     console.log('you are logged in ' + req.user.firstname + req.user.googleId);
-    res.render('profile', { user: req.user, admin: process.env.GOOGLE_ID_ADMIN })
+    console.log('you are logged in ' + req.user.firstname + req.user.googleId);
+    res.render('profile', {user: req.user, admin: process.env.GOOGLE_ID_ADMIN});
+    res.render('navbar', {user: req.user});
+    res.render('index', {user: req.user});
 
 });
 
