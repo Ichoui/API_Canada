@@ -34,8 +34,9 @@ $(document).ready(function () {
                             .attr('class', 'glob');
 
                         let delImg = $('<span>Supprimer</span>')
-                            .attr('id', 'img-' + e.images[i]._id)
-                            .attr('class', 'del-img b del-img-' + [i]);
+                            .attr('data-id', e.images[i]._id)
+                            .attr('data-name', e.images[i].name)
+                            .attr('class', 'del-img');
 
                         let myImg = $('<img src="" class="myimage">')
                             .attr('src', e.images[i].filepath)
@@ -45,10 +46,31 @@ $(document).ready(function () {
                         myImg.appendTo('#glob' + [i]);
                         delImg.appendTo('#glob' + [i]);
                     }
-
+                    // Suppression d'une seule image quand on clique supprimer
                     $('.del-img').on('click', e => {
-                        console.log($(this));
+                        const id = e.currentTarget.attributes[0].nodeValue;
+                        const name = e.currentTarget.attributes[1].nodeValue;
+                        const currentSpan = e.currentTarget;
+                        console.log(e);
+                        $('.overlay-del-one-img').show();
+                        $('.yes-one').on('click', e => {
+                            const divToHide= currentSpan.closest('div.glob');
+                            $.ajax({
+                                url: '/banff/' + id,
+                                type: 'DELETE',
+                                success: e => {
+                                    $("#status").empty().html("Vous venez de supprimer l'image suivante : " + name);
+                                    $('.overlay-del-one-img').hide();
+                                    $(divToHide).hide();
+                                }
+                            })
+                        });
+                        $('.no-one').on('click', e => {
+                            $('.overlay-del-one-img').hide();
+                        });
+
                     });
+
                 });
             },
             error: e => {
@@ -57,7 +79,7 @@ $(document).ready(function () {
         });
     });
 
-
+    // Suprresion d'image
     $('.yes').on('click', e => {
         $('.overlay-del').hide();
         $.ajax({
@@ -73,6 +95,7 @@ $(document).ready(function () {
     $('.no').on('click', e => {
         $('.overlay-del').hide();
         $('.overlay-img').hide();
+        $('.overlay-del-one-img').hide();
         $('.images').empty();
     });
 

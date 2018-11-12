@@ -22,46 +22,56 @@
 </div>
 
 <% if (user.googleId === admin) { %>
-    <div class="blocks-block">
-        <div class="block">
-            <h2 class="text-center">Banff</h2>
-            <form id="post" enctype="multipart/form-data" action="/banff" method="post">
-                <input type="file" name="path" id="path" style="display: none;" multiple/><br>
-                <label for="path" class="btn-cool">Choose your image(s)</label>
-                <button type="submit" name="submit" class="btn-cool">POST Images</button>
-            </form>
-            <div class="block-a">
-                <a id="get" href="#" class="btn-cool">GET</a>
-                <a id="del" href="#" class="btn-cool">DELETE</a>
-            </div>
+<div class="blocks-block">
+    <div class="block">
+        <h2 class="text-center">Banff</h2>
+        <form id="post" enctype="multipart/form-data" action="/banff" method="post">
+            <input type="file" name="path" id="path" style="display: none;" multiple/><br>
+            <label for="path" class="btn-cool">Choose your image(s)</label>
+            <button type="submit" name="submit" class="btn-cool">POST Images</button>
+        </form>
+        <div class="block-a">
+            <a id="get" href="#" class="btn-cool">GET</a>
+            <a id="del" href="#" class="btn-cool">DELETE</a>
         </div>
     </div>
-    <div class="text-center"><b>Status requête</b><br>
-        <div id="status"></div>
-    </div>
+</div>
+<div class="text-center"><b>Status requête</b><br>
+    <div id="status"></div>
+</div>
 
-    <div class='overlay-img'>
-        <div class='popin'>
-            <div class="scrollable-part">
-                <div class="images"></div>
-            </div>
-            <div class="action-man">
-                <a href='#' class='no btn-cool'>Fermer</a>
-            </div>
+<div class='overlay-img'>
+    <div class='popin'>
+        <div class="scrollable-part">
+            <div class="images"></div>
+        </div>
+        <div class="action-man">
+            <a href='#' class='no btn-cool'>Fermer</a>
         </div>
     </div>
+</div>
 
-    <div class="overlay-del">
-        <div class="popin">
-            <p>Est-ce vous voulez vraiment supprimer la totalité de vos images en base ?</p>
-            <div class="action-man">
-                <a href="#" class="yes btn-cool">OUI</a>
-                <a href="#" class="no btn-cool">NON</a>
-            </div>
+<div class='overlay-del-one-img'>
+    <div class="popin">
+        <p>Est-ce vous voulez vraiment supprimer cette image ?</p>
+        <div class="action-man">
+            <a href="#" class="yes-one btn-cool">OUI</a>
+            <a href="#" class="no-one btn-cool">NON</a>
         </div>
     </div>
+</div>
+
+<div class="overlay-del">
+    <div class="popin">
+        <p>Est-ce vous voulez vraiment supprimer la totalité de vos images en base ?</p>
+        <div class="action-man">
+            <a href="#" class="yes btn-cool">OUI</a>
+            <a href="#" class="no btn-cool">NON</a>
+        </div>
+    </div>
+</div>
 <% } else { %>
-    <div class="text-center">Welcome, <%= user.firstname %><br> You are not logged as Admin</div>
+<div class="text-center">Welcome, <%= user.firstname %><br> You are not logged as Admin</div>
 <% } %>
 
 </body>
