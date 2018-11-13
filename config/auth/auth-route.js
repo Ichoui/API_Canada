@@ -8,7 +8,9 @@ router.get('/google', passport.authenticate('google', {
 
 router.get('/logout', (req, res) => {
     req.logout();
-    res.redirect('/')
+    res.redirect('/');
+    // res.render('index', {user: 'notLogged'});
+
 });
 
 // callback route for google to redirect

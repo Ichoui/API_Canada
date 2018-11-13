@@ -12,7 +12,6 @@ passport.deserializeUser((id, done) => {
     });
 });
 
-
 passport.use(
     new Google({
         callbackURL: '/auth/google/redirect',
@@ -36,7 +35,6 @@ passport.use(
                 });
             }
         });
-
     })
 );
 
