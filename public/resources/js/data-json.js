@@ -1,5 +1,14 @@
 $(document).ready(function () {
 
+    let $block = $('.blocks-block');
+    let albumName;
+
+    if ($block.hasClass('banff')) {
+        albumName = 'banff';
+    } else if ($block.hasClass('francois')) {
+        albumName = 'francois';
+    }
+
     $('#post').submit(function (e) {
         e.preventDefault();
         $("#status").empty().html("Les fichiers sont en cours d'upload ... <img src='/resources/img/loader.gif' alt='loader'>");
@@ -18,7 +27,7 @@ $(document).ready(function () {
     $('#get').on('click', e => {
         e.preventDefault();
         $.ajax({
-            url: '/banff',
+            url: '/' + albumName,
             type: 'GET',
             success: e => {
                 console.log(e);
@@ -54,9 +63,9 @@ $(document).ready(function () {
                         console.log(e);
                         $('.overlay-del-one-img').show();
                         $('.yes-one').on('click', e => {
-                            const divToHide= currentSpan.closest('div.glob');
+                            const divToHide = currentSpan.closest('div.glob');
                             $.ajax({
-                                url: '/banff/' + id,
+                                url: '/' + albumName + '/' + id,
                                 type: 'DELETE',
                                 success: e => {
                                     $("#status").empty().html("Vous venez de supprimer l'image suivante : " + name);
@@ -83,7 +92,7 @@ $(document).ready(function () {
     $('.yes').on('click', e => {
         $('.overlay-del').hide();
         $.ajax({
-            url: '/banff',
+            url: '/'+albumName,
             type: 'DELETE',
             success: e => {
                 console.log(e);

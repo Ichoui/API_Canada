@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
 const fs = require('fs');
-const albumName = process.env.BANFF_FOLDER;
+const albumName = process.env.FRANCOIS_FOLDER;
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './images/' + albumName);
@@ -23,6 +23,7 @@ const fileFilter = (req, file, cb) => {
         cb(new Error(req), false)
     }
 };
+
 const upload = multer({
     storage: storage,
     fileFilter: fileFilter
@@ -68,7 +69,7 @@ router.get('/', (req, res, next) => {
 
 // POST
 router.post('/', upload.array('path', 1000), (req, res, next) => {
-    console.log(req.files);
+    // console.log(req.files);
     const lengthReq = req.files.length;
     let img;
 
@@ -97,7 +98,6 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
                     message: 'Number of images posted : ' + lengthReq,
                     // createdImage: img
                 });
-
             })
             .catch(err => {
                 // console.log(err);
