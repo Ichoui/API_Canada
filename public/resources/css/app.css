@@ -6354,15 +6354,21 @@ body {
     position: absolute;
     right: 20px;
     top: 5px; }
+    @media all and (max-width: 480px) {
+      .nav .nav-right {
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 200%;
+        right: auto; } }
     .nav .nav-right .google-img {
       border-radius: 50%;
       margin-right: 20px; }
-  @media all and (max-width: 480px) {
-    .nav .nav-login {
-      transform: translate(-50%, -50%);
-      left: 50%;
-      top: 200%;
-      right: auto; } }
+      @media all and (max-width: 480px) {
+        .nav .nav-right .google-img {
+          position: absolute;
+          top: -80px;
+          transform: translate(-50%, -50%);
+          left: 50%; } }
 
 .btn-cool {
   background-color: transparent;
@@ -6382,7 +6388,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 10vh; }
+  margin-top: 15vh; }
   .blocks-block .block {
     background-color: rgba(19, 20, 36, 0.85);
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -6428,7 +6434,7 @@ body {
   flex-wrap: wrap; }
   .overlay-img .images .glob {
     position: relative;
-    margin: 18px 5px; }
+    margin: 15px auto; }
     .overlay-img .images .glob .myimage {
       width: 100px; }
       .overlay-img .images .glob .myimage:hover {

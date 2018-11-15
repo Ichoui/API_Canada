@@ -57,17 +57,21 @@ body {
     position: absolute;
     right: 20px;
     top: 5px;
-    .google-img {
-      border-radius: 50%;
-      margin-right: 20px;
-    }
-  }
-  .nav-login {
     @include breakpoint(mobile) {
       transform: translate(-50%, -50%);
       left: 50%;
       top: 200%;
       right: auto;
+    }
+    .google-img {
+      border-radius: 50%;
+      margin-right: 20px;
+      @include breakpoint(mobile) {
+        position: absolute;
+        top: -80px;
+        transform: translate(-50%, -50%);
+        left: 50%;
+      }
     }
   }
 }
@@ -94,7 +98,7 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 10vh;
+  margin-top: 15vh;
   .block {
     background-color: rgba(19, 20, 36, .85);
     border: 1px solid hsla(0, 0%, 100%, .25);
@@ -151,7 +155,7 @@ body {
     flex-wrap: wrap;
     .glob {
       position: relative;
-      margin: 18px 5px;
+      margin: 15px auto;
       .myimage {
         width: 100px;
         &:hover {
