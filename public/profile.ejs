@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<% if (user.googleId === 'admin') { %>
+<% if (user.googleId === admin) { %>
 <div class="blocks-block <%= folderBanff %>">
     <div class="block">
         <h2 class="text-center">Banff</h2>
@@ -42,7 +42,7 @@
 
 <% include popin.ejs %>
 <!--pas oublier de switch admin et francois-->
-<% } else if (user.googleId === admin) { %>
+<% } else if (user.googleId === francois) { %>
 
 <div class="blocks-block <%= folderFrancois %>">
     <div class="block">
