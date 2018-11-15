@@ -2,14 +2,21 @@ $(document).ready(function () {
 
     let $block = $('.blocks-block');
     let albumName;
+    let numberAlbum;
 
+    // User Admin
     if ($block.hasClass('banff')) {
         albumName = 'banff';
-    } else if ($block.hasClass('francois')) {
+    } else if ($block.hasClass('maple')) {
+        albumName = 'maple';
+    }
+    // User Francois
+    if ($block.hasClass('francois')) {
         albumName = 'francois';
     }
 
-    $('#post').submit(function (e) {
+
+    $('#post, #post2').submit(function (e) {
         e.preventDefault();
         $("#status").empty().html("Les fichiers sont en cours d'upload ... <img src='/resources/img/loader.gif' alt='loader'>");
         $(this).ajaxSubmit({
@@ -24,7 +31,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#get').on('click', e => {
+    $('#get, #get2').on('click', e => {
         e.preventDefault();
         $.ajax({
             url: '/' + albumName,
@@ -92,7 +99,7 @@ $(document).ready(function () {
     $('.yes').on('click', e => {
         $('.overlay-del').hide();
         $.ajax({
-            url: '/'+albumName,
+            url: '/' + albumName,
             type: 'DELETE',
             success: e => {
                 console.log(e);
@@ -108,10 +115,17 @@ $(document).ready(function () {
         $('.images').empty();
     });
 
-    $('#del').on('click', e => {
+    $('#del, #del2').on('click', e => {
         $('.overlay-del').show();
     });
 
+    // slicked
+
+    $('.blocks-slider').slick({
+        dots: false,
+        slideToShow: 1,
+        slideToScroll: 1
+    });
 
     function getRandomInt(max, min) {
         return Math.floor(Math.random() * max) + min;

@@ -25,6 +25,7 @@ const profileRoute = require('./config/routes/profile-route');
 // ROUTES API images
 const banffRoutes = require('./api/routes/banff');
 const francoisRoutes = require('./api/routes/francois');
+const mapleRoutes = require('./api/routes/maple');
 
 // DATABASE
 const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW +
@@ -61,6 +62,7 @@ app.get('/', function (req, res) {
 });
 app.use('/banff', banffRoutes);
 app.use('/francois', francoisRoutes);
+app.use('/maple', mapleRoutes);
 
 // Paths google et authentification
 app.use('/', routeGoogle);

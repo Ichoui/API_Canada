@@ -9,6 +9,7 @@ $dark-blue: #111e39;
 
 body {
   color: white;
+  overflow:hidden;
   @include breakpoint(mobile) {
     background: #131524 url("../img/hero_mobile.jpg") center 9% no-repeat !important;
   }
@@ -99,15 +100,20 @@ body {
 // BLOCKS
 .blocks-block {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 15vh;
+  &:focus {
+    outline: none;
+  }
   .block {
+    align-self: center;
     background-color: rgba(19, 20, 36, .85);
     border: 1px solid hsla(0, 0%, 100%, .25);
     width: 300px;
     padding: 10px;
-    margin: 10px 15px;
+    margin: 10px auto;
     label.btn-cool {
       border: 0;
       border-bottom: 1px solid white;
@@ -121,6 +127,9 @@ body {
   .block-a {
     text-align: center;
     margin-top: 20px;
+  }
+  .status-request {
+    text-align: center;
   }
 }
 
