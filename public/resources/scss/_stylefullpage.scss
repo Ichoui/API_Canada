@@ -9,6 +9,9 @@ $dark-blue: #111e39;
 
 body {
   color: white;
+  @include breakpoint(mobile) {
+    background: #131524 url("../img/hero_mobile.jpg") center 9% no-repeat !important;
+  }
 }
 
 .body1 {
@@ -190,6 +193,5 @@ body {
 
 @media all and (max-width: 768px) {
   body {
-    background: #131524 url("../img/hero_mobile.jpg") center 9% no-repeat !important;
   }
 }
