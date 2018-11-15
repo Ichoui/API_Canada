@@ -6427,6 +6427,9 @@ body {
     text-align: center;
     padding: 20px;
     border-radius: 5px; }
+    @media all and (max-width: 480px) {
+      .overlay-del .popin, .overlay-img .popin, .overlay-del-one-img .popin {
+        width: 380px; } }
     .overlay-del .popin .action-man, .overlay-img .popin .action-man, .overlay-del-one-img .popin .action-man {
       margin: 5px auto 0; }
       .overlay-del .popin .action-man .yes, .overlay-del .popin .action-man .no, .overlay-del .popin .action-man .yes-one, .overlay-del .popin .action-man .no-one, .overlay-del .popin .action-man .closed, .overlay-img .popin .action-man .yes, .overlay-img .popin .action-man .no, .overlay-img .popin .action-man .yes-one, .overlay-img .popin .action-man .no-one, .overlay-img .popin .action-man .closed, .overlay-del-one-img .popin .action-man .yes, .overlay-del-one-img .popin .action-man .no, .overlay-del-one-img .popin .action-man .yes-one, .overlay-del-one-img .popin .action-man .no-one, .overlay-del-one-img .popin .action-man .closed {
