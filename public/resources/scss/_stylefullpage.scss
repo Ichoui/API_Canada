@@ -143,6 +143,9 @@ body {
     text-align: center;
     padding: 20px;
     border-radius: 5px;
+    @include breakpoint(mobile) {
+      width: 380px;
+    }
     .action-man {
       margin: 5px auto 0;
       .yes, .no, .yes-one, .no-one, .closed {
