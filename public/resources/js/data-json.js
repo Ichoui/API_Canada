@@ -4,6 +4,7 @@ $(document).ready(function () {
         let $block = $('.blocks-block');
         let albumName;
 
+
         if ($this !== null) {
             if ($this.closest($block).hasClass('banff')) {
                 albumName = 'banff';
@@ -13,12 +14,22 @@ $(document).ready(function () {
             else if ($this.closest($block).hasClass('francois')) {
                 albumName = 'francois';
             }
+            // Pour le GET
         } else if (e_get !== null) {
             if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'banff') {
                 albumName = 'banff';
             } else if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'maple') {
                 albumName = 'maple';
             } else if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'francois') {
+                albumName = 'francois';
+            }
+            // Pour le DEL
+        } else if (e_del !== null) {
+            if (e_del.currentTarget.parentNode.parentNode.parentNode.parentNode.classList[1] === 'banff') {
+                albumName = 'banff';
+            } else if (e_del.currentTarget.parentNode.parentNode.parentNode.parentNode.classList[1] === 'maple') {
+                albumName = 'maple';
+            } else if (e_del.currentTarget.parentNode.parentNode.parentNode.parentNode.classList[1] === 'francois') {
                 albumName = 'francois';
             }
         }
@@ -109,8 +120,10 @@ $(document).ready(function () {
     });
 
     // Suprresion d'image
-    $('.yes').on('click', e => {
+    $('.del-all').on('click', e => {
         let albumName = whereAmI(null, null, e);
+        console.log(e);
+
         $('.overlay-del').hide();
         $.ajax({
             url: '/' + albumName,
@@ -129,8 +142,14 @@ $(document).ready(function () {
         $('.images').empty();
     });
 
-    $('#del').on('click', e => {
+    $('.del').on('click', e => {
         $('.overlay-del').show();
+    });
+
+    $('.blocks-slider').slick({
+        dots: false,
+        slideToShow: 1,
+        slideToScroll: 1
     });
 
 
