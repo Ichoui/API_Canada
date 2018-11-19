@@ -23,7 +23,7 @@
 
 <% if (user.googleId === admin) { %>
 <div class="blocks-slider">
-    <div class="blocks-block <%= folderBanff %>">
+    <div class="blocks-block <%= folderBanff %>" data-placement="<%= folderBanff %>">
         <div class="block">
             <h2 class="text-center">Banff</h2>
             <form id="post" enctype="multipart/form-data" action="/banff" method="post">
@@ -32,17 +32,30 @@
                 <button type="submit" name="submit" class="btn-cool">POST Images</button>
             </form>
             <div class="block-a">
-                <a id="get" href="#" class="btn-cool">GET</a>
+                <a href="#" class="btn-cool get">GET</a>
                 <a href="#" class="btn-cool del">DELETE</a>
             </div>
         </div>
-        <% include popin.ejs %>
+    </div>
+    <div class="blocks-block <%= folderMaple %>" data-placement="<%= folderMaple %>">
+        <div class="block">
+            <h2 class="text-center">Maple</h2>
+            <form id="post2" enctype="multipart/form-data" action="/maple" method="post">
+                <input type="file" name="path" id="path2" style="display: none;" multiple/><br>
+                <label for="path2" class="btn-cool">Choose your image(s)</label>
+                <button type="submit" form="post2" class="btn-cool">POST Images</button>
+            </form>
+            <div class="block-a">
+                <a href="#" class="btn-cool get">GET</a>
+                <a href="#" class="btn-cool del">DELETE</a>
+            </div>
+        </div>
     </div>
 </div>
 <div class="text-center"><b>Status requête</b><br>
     <div id="status"></div>
 </div>
-
+<% include popin.ejs %>
 <% include popin-shared.ejs %>
 
 <!--pas oublier de switch admin et francois-->
@@ -57,7 +70,7 @@
             <button type="submit" name="submit" class="btn-cool">POST Images</button>
         </form>
         <div class="block-a">
-            <a id="get" href="#" class="btn-cool">GET</a>
+            <a href="#" class="btn-cool get">GET</a>
             <a href="#" class="btn-cool del">DELETE</a>
         </div>
     </div>

@@ -1,21 +1,23 @@
 $(document).ready(function () {
 
-    function whereAmI(e_get, $this, e_del) {
+    function whereAmI(e_get, e_del) {
         let $block = $('.blocks-block');
         let albumName;
 
-
-        if ($this !== null) {
-            if ($this.closest($block).hasClass('banff')) {
-                albumName = 'banff';
-            } else if ($this.closest($block).hasClass('maple')) {
-                albumName = 'maple';
-            }
-            else if ($this.closest($block).hasClass('francois')) {
-                albumName = 'francois';
-            }
-            // Pour le GET
-        } else if (e_get !== null) {
+        /*
+                if ($this !== null) {
+                    if ($this.closest($block).hasClass('banff')) {
+                        albumName = 'banff';
+                    } else if ($this.closest($block).hasClass('maple')) {
+                        albumName = 'maple';
+                    }
+                    else if ($this.closest($block).hasClass('francois')) {
+                        albumName = 'francois';
+                    }
+                }
+        */
+        // Pour le GET
+        if (e_get !== null) {
             if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'banff') {
                 albumName = 'banff';
             } else if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'maple') {
@@ -38,7 +40,7 @@ $(document).ready(function () {
         return albumName;
     }
 
-    $('#post').submit(function (e) {
+    $('#post, #post2').submit(function (e) {
         e.preventDefault();
         $("#status").empty().html("Les fichiers sont en cours d'upload ... <img src='/resources/img/loader.gif' alt='loader'>");
         $(this).ajaxSubmit({
@@ -53,8 +55,9 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#get').on('click', e => {
+    $('.get').on('click', e => {
         e.preventDefault();
+        console.log(e);
         let albumName = whereAmI(e, null);
 
         $.ajax({
@@ -119,9 +122,9 @@ $(document).ready(function () {
         });
     });
 
-    // Suprresion d'image
+    // Suprresion d'image depuis la POPIN OUI/NON
     $('.del-all').on('click', e => {
-        let albumName = whereAmI(null, null, e);
+        let albumName = whereAmI(null, e);
         console.log(e);
 
         $('.overlay-del').hide();
@@ -144,6 +147,9 @@ $(document).ready(function () {
 
     $('.del').on('click', e => {
         $('.overlay-del').show();
+        console.log($(this))
+        // TODO VOIR CE QUE ON PEUT FAIRE DE  CE £THIS ?
+        // console.log(.closest('.blocks-block').data('placement'));
     });
 
     $('.blocks-slider').slick({

@@ -23,7 +23,6 @@ const fileFilter = (req, file, cb) => {
         cb(new Error(req), false)
     }
 };
-
 const upload = multer({
     storage: storage,
     fileFilter: fileFilter
@@ -69,7 +68,7 @@ router.get('/', (req, res, next) => {
 
 // POST
 router.post('/', upload.array('path', 1000), (req, res, next) => {
-    // console.log(req.files);
+    console.log(req.files);
     const lengthReq = req.files.length;
     let img;
 
@@ -98,12 +97,14 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
                     message: 'Number of images posted : ' + lengthReq,
                     // createdImage: img
                 });
+
             })
             .catch(err => {
                 // console.log(err);
                 // res.status(500).json({post_error: err})
             });
     }
+    // res.render("back") // redirect to the last page
 });
 
 // GET ID
