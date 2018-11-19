@@ -1,46 +1,25 @@
 $(document).ready(function () {
+    let placement;
 
-    function whereAmI(e_get, e_del) {
+    function whereAmI($this) {
         let $block = $('.blocks-block');
         let albumName;
 
-        /*
-                if ($this !== null) {
-                    if ($this.closest($block).hasClass('banff')) {
-                        albumName = 'banff';
-                    } else if ($this.closest($block).hasClass('maple')) {
-                        albumName = 'maple';
-                    }
-                    else if ($this.closest($block).hasClass('francois')) {
-                        albumName = 'francois';
-                    }
-                }
-        */
-        // Pour le GET
-        if (e_get !== null) {
-            if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'banff') {
-                albumName = 'banff';
-            } else if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'maple') {
-                albumName = 'maple';
-            } else if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'francois') {
-                albumName = 'francois';
-            }
-            // Pour le DEL
-        } else if (e_del !== null) {
-            if (e_del.currentTarget.parentNode.parentNode.parentNode.parentNode.classList[1] === 'banff') {
-                albumName = 'banff';
-            } else if (e_del.currentTarget.parentNode.parentNode.parentNode.parentNode.classList[1] === 'maple') {
-                albumName = 'maple';
-            } else if (e_del.currentTarget.parentNode.parentNode.parentNode.parentNode.classList[1] === 'francois') {
-                albumName = 'francois';
-            }
+
+        if ($this.closest($block).hasClass('banff')) {
+            albumName = 'banff';
+        } else if ($this.closest($block).hasClass('maple')) {
+            albumName = 'maple';
+
+        } else if ($this.closest($block).hasClass('francois')) {
+            albumName = 'francois';
         }
 
         console.log(albumName);
         return albumName;
     }
 
-    $('#post, #post2').submit(function (e) {
+    $('.post').submit(function (e) {
         e.preventDefault();
         $("#status").empty().html("Les fichiers sont en cours d'upload ... <img src='/resources/img/loader.gif' alt='loader'>");
         $(this).ajaxSubmit({
@@ -55,10 +34,9 @@ $(document).ready(function () {
         return false;
     });
 
-    $('.get').on('click', e => {
+    $('.get').on('click', function (e) {
         e.preventDefault();
-        console.log(e);
-        let albumName = whereAmI(e, null);
+        let albumName = whereAmI($(this));
 
         $.ajax({
             url: '/' + albumName,
@@ -123,9 +101,8 @@ $(document).ready(function () {
     });
 
     // Suprresion d'image depuis la POPIN OUI/NON
-    $('.del-all').on('click', e => {
-        let albumName = whereAmI(null, e);
-        console.log(e);
+    $('.del-all').on('click', function(e) {
+        let albumName = whereAmI($(this));
 
         $('.overlay-del').hide();
         $.ajax({
@@ -138,6 +115,7 @@ $(document).ready(function () {
         });
     });
 
+    // NON DANS LES POPUP
     $('.no').on('click', e => {
         $('.overlay-del').hide();
         $('.overlay-img').hide();
@@ -145,20 +123,20 @@ $(document).ready(function () {
         $('.images').empty();
     });
 
-    $('.del').on('click', e => {
+    // GROS BOUTON DELETE
+    $('.del').on('click', function () {
         $('.overlay-del').show();
-        console.log($(this))
-        // TODO VOIR CE QUE ON PEUT FAIRE DE  CE £THIS ?
-        // console.log(.closest('.blocks-block').data('placement'));
+        placement = $(this).closest('.blocks-block').data('placement');
     });
 
+    // SLICK
     $('.blocks-slider').slick({
         dots: false,
         slideToShow: 1,
         slideToScroll: 1
     });
 
-
+        // RANDOM BACKGROUND IMAGE
     function getRandomInt(max, min) {
         return Math.floor(Math.random() * max) + min;
     }
