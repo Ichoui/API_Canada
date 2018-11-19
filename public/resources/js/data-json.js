@@ -5,7 +5,6 @@ $(document).ready(function () {
         let $block = $('.blocks-block');
         let albumName;
 
-
         if ($this.closest($block).hasClass('banff')) {
             albumName = 'banff';
         } else if ($this.closest($block).hasClass('maple')) {
@@ -14,8 +13,6 @@ $(document).ready(function () {
         } else if ($this.closest($block).hasClass('francois')) {
             albumName = 'francois';
         }
-
-        console.log(albumName);
         return albumName;
     }
 
@@ -101,7 +98,7 @@ $(document).ready(function () {
     });
 
     // Suprresion d'image depuis la POPIN OUI/NON
-    $('.del-all').on('click', function(e) {
+    $('.del-all').on('click', function (e) {
         let albumName = whereAmI($(this));
 
         $('.overlay-del').hide();
@@ -126,17 +123,17 @@ $(document).ready(function () {
     // GROS BOUTON DELETE
     $('.del').on('click', function () {
         $('.overlay-del').show();
-        placement = $(this).closest('.blocks-block').data('placement');
     });
 
     // SLICK
     $('.blocks-slider').slick({
         dots: false,
         slideToShow: 1,
-        slideToScroll: 1
+        slideToScroll: 1,
+        infinite:false
     });
 
-        // RANDOM BACKGROUND IMAGE
+    // RANDOM BACKGROUND IMAGE
     function getRandomInt(max, min) {
         return Math.floor(Math.random() * max) + min;
     }
