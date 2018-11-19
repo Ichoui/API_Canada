@@ -6619,8 +6619,9 @@ body {
   .blocks-block .block-a {
     text-align: center;
     margin-top: 20px; }
-  .blocks-block .status-request {
-    text-align: center; }
+
+.block-status {
+  text-align: center; }
 
 .overlay-del, .overlay-img, .overlay-del-one-img {
   display: none;

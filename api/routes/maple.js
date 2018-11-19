@@ -104,7 +104,6 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
                 // res.status(500).json({post_error: err})
             });
     }
-    // res.redirect("back") // redirect to the last page
 });
 
 // GET ID

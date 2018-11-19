@@ -22,74 +22,55 @@
 </div>
 
 <% if (user.googleId === admin) { %>
-    <div class="blocks-slider">
-        <div class="blocks-block <%= folderBanff %>">
-            <div class="block">
-                <h2 class="text-center">Banff</h2>
-                <form id="post" enctype="multipart/form-data" action="/banff" method="post">
-                    <input type="file" name="path" id="path" style="display: none;" multiple/><br>
-                    <label for="path" class="btn-cool">Choose your image(s)</label>
-                    <button type="submit" name="submit" class="btn-cool">POST Images</button>
-                </form>
-                <div class="block-a">
-                    <a id="get" href="#" class="btn-cool">GET</a>
-                    <a id="del" href="#" class="btn-cool">DELETE</a>
-                </div>
-            </div>
-            <div class="status-request"><b>Status requête</b><br>
-                <div id="status"></div>
-            </div>
-        </div>
-        <div class="blocks-block <%= folderMaple %>">
-            <div class="block">
-                <h2 class="text-center">Maple</h2>
-                <form id="post2" enctype="multipart/form-data" action="/maple" method="post">
-                    <input type="file" name="path2" id="path2" style="display: none;" multiple/><br>
-                    <label for="path2" class="btn-cool">Choose your image(s)</label>
-                    <button type="submit" name="submit" class="btn-cool">POST Images</button>
-                </form>
-                <div class="block-a">
-                    <a id="get2" href="#" class="btn-cool">GET</a>
-                    <a id="del2" href="#" class="btn-cool">DELETE</a>
-                </div>
-            </div>
-            <div class="status-request"><b>Status requête</b><br>
-                <div id="status"></div>
-            </div>
+<div class="blocks-block <%= folderBanff %>">
+    <div class="block">
+        <h2 class="text-center">Banff</h2>
+        <form id="post" enctype="multipart/form-data" action="/banff" method="post">
+            <input type="file" name="path" id="path" style="display: none;" multiple/><br>
+            <label for="path" class="btn-cool">Choose your image(s)</label>
+            <button type="submit" name="submit" class="btn-cool">POST Images</button>
+        </form>
+        <div class="block-a">
+            <a id="get" href="#" class="btn-cool">GET</a>
+            <a id="del" href="#" class="btn-cool">DELETE</a>
         </div>
     </div>
-    <% include popin.ejs %>
+</div>
+<div class="text-center"><b>Status requête</b><br>
+    <div id="status"></div>
+</div>
 
+<% include popin.ejs %>
+<!--pas oublier de switch admin et francois-->
 <% } else if (user.googleId === francois) { %>
 
-    <div class="blocks-block <%= folderFrancois %>">
-        <div class="block">
-            <h2 class="text-center">Francois</h2>
-            <form id="post" enctype="multipart/form-data" action="/francois" method="post">
-                <input type="file" name="path" id="path" style="display: none;" multiple/><br>
-                <label for="path" class="btn-cool">Choose your image(s)</label>
-                <button type="submit" name="submit" class="btn-cool">POST Images</button>
-            </form>
-            <div class="block-a">
-                <a id="get" href="#" class="btn-cool">GET</a>
-                <a id="del" href="#" class="btn-cool">DELETE</a>
-            </div>
-        </div>
-        <div class="status-request"><b>Status requête</b><br>
-            <div id="status"></div>
+<div class="blocks-block <%= folderFrancois %>">
+    <div class="block">
+        <h2 class="text-center">Francois</h2>
+        <form id="post" enctype="multipart/form-data" action="/francois" method="post">
+            <input type="file" name="path" id="path" style="display: none;" multiple/><br>
+            <label for="path" class="btn-cool">Choose your image(s)</label>
+            <button type="submit" name="submit" class="btn-cool">POST Images</button>
+        </form>
+        <div class="block-a">
+            <a id="get" href="#" class="btn-cool">GET</a>
+            <a id="del" href="#" class="btn-cool">DELETE</a>
         </div>
     </div>
+</div>
+<div class="text-center"><b>Status requête</b><br>
+    <div id="status"></div>
+</div>
 
-    <% include popin.ejs %>
+<% include popin.ejs %>
 
 <% } else { %>
-    <div class="text-center">Bonjour, <%= user.firstname %><br> vous n'êtes pas connecté en tant qu'Administrateur</div>
+<div class="text-center">Bonjour, <%= user.firstname %><br> vous n'êtes pas connecté en tant qu'Administrateur</div>
 <% } %>
 </body>
 
 <script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/js/jquery.form.min.js"></script>
 <script src="/resources/js/data-json.js"></script>
-<script src="/resources/js/slick.min.js"></script>
 
 </html>

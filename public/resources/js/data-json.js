@@ -1,22 +1,33 @@
 $(document).ready(function () {
 
-    let $block = $('.blocks-block');
-    let albumName;
-    let numberAlbum;
+    function whereAmI(e_get, $this, e_del) {
+        let $block = $('.blocks-block');
+        let albumName;
 
-    // User Admin
-    if ($block.hasClass('banff')) {
-        albumName = 'banff';
-    } else if ($block.hasClass('maple')) {
-        albumName = 'maple';
+        if ($this !== null) {
+            if ($this.closest($block).hasClass('banff')) {
+                albumName = 'banff';
+            } else if ($this.closest($block).hasClass('maple')) {
+                albumName = 'maple';
+            }
+            else if ($this.closest($block).hasClass('francois')) {
+                albumName = 'francois';
+            }
+        } else if (e_get !== null) {
+            if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'banff') {
+                albumName = 'banff';
+            } else if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'maple') {
+                albumName = 'maple';
+            } else if (e_get.currentTarget.parentNode.parentElement.parentElement.classList[1] === 'francois') {
+                albumName = 'francois';
+            }
+        }
+
+        console.log(albumName);
+        return albumName;
     }
-    // User Francois
-    if ($block.hasClass('francois')) {
-        albumName = 'francois';
-    }
 
-
-    $('#post, #post2').submit(function (e) {
+    $('#post').submit(function (e) {
         e.preventDefault();
         $("#status").empty().html("Les fichiers sont en cours d'upload ... <img src='/resources/img/loader.gif' alt='loader'>");
         $(this).ajaxSubmit({
@@ -31,8 +42,10 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#get, #get2').on('click', e => {
+    $('#get').on('click', e => {
         e.preventDefault();
+        let albumName = whereAmI(e, null);
+
         $.ajax({
             url: '/' + albumName,
             type: 'GET',
@@ -97,6 +110,7 @@ $(document).ready(function () {
 
     // Suprresion d'image
     $('.yes').on('click', e => {
+        let albumName = whereAmI(null, null, e);
         $('.overlay-del').hide();
         $.ajax({
             url: '/' + albumName,
@@ -115,17 +129,10 @@ $(document).ready(function () {
         $('.images').empty();
     });
 
-    $('#del, #del2').on('click', e => {
+    $('#del').on('click', e => {
         $('.overlay-del').show();
     });
 
-    // slicked
-
-    $('.blocks-slider').slick({
-        dots: false,
-        slideToShow: 1,
-        slideToScroll: 1
-    });
 
     function getRandomInt(max, min) {
         return Math.floor(Math.random() * max) + min;
