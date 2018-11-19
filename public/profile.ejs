@@ -26,7 +26,6 @@
 <div class="blocks-slider">
     <div class="blocks-block <%= folderBanff %>" data-placement="<%= folderBanff %>">
         <div class="block">
-            <% include popin.ejs %>
             <h2 class="text-center">Banff</h2>
             <form class="post" enctype="multipart/form-data" action="/banff" method="post">
                 <input type="file" name="path" id="path" style="display: none;" multiple/><br>
@@ -41,8 +40,6 @@
     </div>
     <div class="blocks-block <%= folderMaple %>" data-placement="<%= folderMaple %>">
         <div class="block">
-            <% include popin.ejs %>
-
             <h2 class="text-center">Maple</h2>
             <form class="post" enctype="multipart/form-data" action="/maple" method="post">
                 <input type="file" name="path" id="path2" style="display: none;" multiple/><br>
@@ -60,6 +57,7 @@
     <div id="status"></div>
 </div>
 
+<% include popin.ejs %>
 <% include popin-shared.ejs %>
 
 <!--pas oublier de switch admin et francois-->

@@ -99,8 +99,8 @@ $(document).ready(function () {
 
     // Suprresion d'image depuis la POPIN OUI/NON
     $('.del-all').on('click', function (e) {
-        let albumName = whereAmI($(this));
-
+        // let albumName = whereAmI($(this));
+        let albumName = placement;
         $('.overlay-del').hide();
         $.ajax({
             url: '/' + albumName,
@@ -123,6 +123,7 @@ $(document).ready(function () {
     // GROS BOUTON DELETE
     $('.del').on('click', function () {
         $('.overlay-del').show();
+        placement = $(this).closest('.blocks-block').data('placement');
     });
 
     // SLICK
@@ -130,7 +131,7 @@ $(document).ready(function () {
         dots: false,
         slideToShow: 1,
         slideToScroll: 1,
-        infinite:false
+        infinite: false
     });
 
     // RANDOM BACKGROUND IMAGE
