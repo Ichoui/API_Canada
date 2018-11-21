@@ -14,14 +14,15 @@
     "pm2": "^3.2.2"
   },
   "scripts": {
-    "start": "pm2 start server.js && pm2 logs",
-    "stop": "pm2 stop server.js",
-    "start_prod": "pm2 start server.js",
     "nodemon": "nodemon server.js",
+    "start": "pm2 start server.js",
     "restart": "pm2 restart server.js",
+    "stop": "pm2 delete server.js",
+    "lels": "pm2 ls",
     "logs": "pm2 logs",
     "logsraw": "pm2 logs --raw",
     "monitor": "pm2 monit",
+    "start_node": "node server.js",
     "buildcss": "node-sass --include-path scss public/resources/scss/app.scss public/resources/css/app.css",
     "watch": "nodemon -e scss -x \"npm run buildcss\""
   },
