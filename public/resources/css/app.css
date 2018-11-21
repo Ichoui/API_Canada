@@ -6542,7 +6542,8 @@ body {
   background: #131524 url("../img/pandoras-mask.jpg") center 9% no-repeat; }
 
 .nav {
-  top: 10px; }
+  top: 10px;
+  z-index: 900; }
   @media all and (max-width: 480px) {
     .nav {
       display: flex; } }
@@ -6619,8 +6620,9 @@ body {
   .blocks-block .block-a {
     text-align: center;
     margin-top: 20px; }
-  .blocks-block .status-request {
-    text-align: center; }
+
+.block-status {
+  text-align: center; }
 
 .overlay-del, .overlay-img, .overlay-del-one-img {
   display: none;
@@ -6677,3 +6679,11 @@ body {
   max-height: 65vh;
   overflow-x: auto;
   margin-bottom: 20px; }
+
+.blocks-slider.slick-initialized {
+  visibility: visible;
+  opacity: 1; }
+
+.blocks-slider {
+  opacity: 0;
+  visibility: hidden; }

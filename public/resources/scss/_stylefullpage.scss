@@ -38,6 +38,7 @@ body {
 // MENU
 .nav {
   top: 10px;
+  z-index: 900;
   @include breakpoint(mobile) {
     display: flex;
   }
@@ -128,10 +129,10 @@ body {
     text-align: center;
     margin-top: 20px;
   }
-  .status-request {
+}
+  .block-status {
     text-align: center;
   }
-}
 
 //OVERLAY's
 .overlay-del, .overlay-img, .overlay-del-one-img {
@@ -206,4 +207,15 @@ body {
 @media all and (max-width: 768px) {
   body {
   }
+}
+
+// MITCH-NIQUE POUR POP NON SACCADÉ DE SLICKOUILLE
+.blocks-slider.slick-initialized {
+  visibility: visible;
+  opacity: 1;
+}
+
+.blocks-slider {
+  opacity: 0;
+  visibility: hidden;
 }

@@ -1,22 +1,22 @@
 $(document).ready(function () {
+    let placement;
 
-    let $block = $('.blocks-block');
-    let albumName;
-    let numberAlbum;
+    function whereAmI($this) {
+        let $block = $('.blocks-block');
+        let albumName;
 
-    // User Admin
-    if ($block.hasClass('banff')) {
-        albumName = 'banff';
-    } else if ($block.hasClass('maple')) {
-        albumName = 'maple';
+        if ($this.closest($block).hasClass('banff')) {
+            albumName = 'banff';
+        } else if ($this.closest($block).hasClass('maple')) {
+            albumName = 'maple';
+
+        } else if ($this.closest($block).hasClass('francois')) {
+            albumName = 'francois';
+        }
+        return albumName;
     }
-    // User Francois
-    if ($block.hasClass('francois')) {
-        albumName = 'francois';
-    }
 
-
-    $('#post, #post2').submit(function (e) {
+    $('.post').submit(function (e) {
         e.preventDefault();
         $("#status").empty().html("Les fichiers sont en cours d'upload ... <img src='/resources/img/loader.gif' alt='loader'>");
         $(this).ajaxSubmit({
@@ -31,8 +31,10 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#get, #get2').on('click', e => {
+    $('.get').on('click', function (e) {
         e.preventDefault();
+        let albumName = whereAmI($(this));
+
         $.ajax({
             url: '/' + albumName,
             type: 'GET',
@@ -95,8 +97,10 @@ $(document).ready(function () {
         });
     });
 
-    // Suprresion d'image
-    $('.yes').on('click', e => {
+    // Suprresion d'image depuis la POPIN OUI/NON
+    $('.del-all').on('click', function (e) {
+        // let albumName = whereAmI($(this));
+        let albumName = placement;
         $('.overlay-del').hide();
         $.ajax({
             url: '/' + albumName,
@@ -108,6 +112,7 @@ $(document).ready(function () {
         });
     });
 
+    // NON DANS LES POPUP
     $('.no').on('click', e => {
         $('.overlay-del').hide();
         $('.overlay-img').hide();
@@ -115,22 +120,17 @@ $(document).ready(function () {
         $('.images').empty();
     });
 
-    $('#del, #del2').on('click', e => {
+    // GROS BOUTON DELETE
+    $('.del').on('click', function () {
         $('.overlay-del').show();
+        placement = $(this).closest('.blocks-block').data('placement');
     });
 
-    // slicked
-
+    // SLICK
     $('.blocks-slider').slick({
         dots: false,
         slideToShow: 1,
-        slideToScroll: 1
+        slideToScroll: 1,
+        infinite: false
     });
-
-    function getRandomInt(max, min) {
-        return Math.floor(Math.random() * max) + min;
-    }
-
-    const rand = getRandomInt(4, 1);
-    $('body').addClass('body' + rand)
 });
