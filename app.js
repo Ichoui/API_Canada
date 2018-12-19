@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
@@ -13,6 +14,22 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: [process.env.COOKIE_KEY]
 }));
+
+// CORS : CROSS-ORIGIN-RESOURCE-SHARING
+// Permet l'échange entre 2 domaines différents de data's, très important
+// app.use(cors()); == fait la même chose que le app.use en dessous, plugin express 'cors'
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Credentials', true);
+    // //
+    if (req.method === "OPTIONS") {
+        res.header('Access-Control-Allow-Method', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+    next();
+});
+
 // init
 app.use(passport.initialize());
 app.use(passport.session());
@@ -41,15 +58,6 @@ app.use(express.static(path.join(__dirname, 'images'))); // donne le droit d'acc
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-Width, Content-Type, Accepte, Authorization');
-    if (req.method === "OPTIONS") {
-        res.header('Access-Control-Allow-Method', 'PUT, POST, PATCH, DELETE, GET');
-        return res.status(200).json({});
-    }
-    next();
-});
 
 //VIEW ENGINE
 app.set('view engine', 'ejs'); //préchargement engine
@@ -71,7 +79,7 @@ app.use('/auth', routeGoogle);
 // app.use('/google', routeGoogle);
 
 
-// GESTION DES ERREURS
+// GESTION DES ERREURS 404 et 500
 app.use((req, res, next) => {
     const error = new Error('Not Found !');
     error.status = 404;
