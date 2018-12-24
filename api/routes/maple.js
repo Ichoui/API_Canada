@@ -38,7 +38,7 @@ const Image = require('../models/' + albumName + '.model');
 // GET
 router.get('/', (req, res, next) => {
     Image.find()
-        .select('name path filepath _id')
+        .select('_id name filepath description')
         .exec()
         .then(docs => {
             const response = {
@@ -47,10 +47,10 @@ router.get('/', (req, res, next) => {
                 images: docs.map(doc => {
                     console.log(doc);
                     return {
-                        name: doc.name,
-                        path: doc.path,
-                        filepath: doc.filepath,
                         _id: doc._id
+,                        name: doc.name,
+                        filepath: doc.filepath,
+                        description: doc.description
                     }
                 })
             };
@@ -87,7 +87,8 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
         img = new Image({
             _id: new mongoose.Types.ObjectId(),
             name: req.files[i].filename,
-            filepath: req.protocol + "://" + req.headers.host + "/" + splittedUrl[1] + "/" + splittedUrl[2]
+            filepath: req.protocol + "://" + req.headers.host + "/" + splittedUrl[1] + "/" + splittedUrl[2],
+            description: ''
         });
 
         img.save()
