@@ -16,6 +16,7 @@ $(document).ready(function () {
         return albumName;
     }
 
+    // Action POST formulaire
     $('.post').submit(function (e) {
         e.preventDefault();
         $("#status").empty().html("Les fichiers sont en cours d'upload ... <img src='/resources/img/loader.gif' alt='loader'>");
@@ -31,6 +32,7 @@ $(document).ready(function () {
         return false;
     });
 
+    // Action GET formulaire
     $('.get').on('click', function (e) {
         e.preventDefault();
         let albumName = whereAmI($(this));
@@ -43,7 +45,8 @@ $(document).ready(function () {
                 $("#status").empty().html(e.method + " <br> Nombre d'images en base : " + e.count +
                     "<br><button class='show-images btn-cool mt-1'>Afficher les images</button>");
 
-                // Popin pour afficher toutes les images et les supprimer
+                // Permet de créer dans la popin overlay-img chaque image
+                // Avec leurs attributs, mais aussi supprimet et update
                 $('.show-images').on('click', e, f => {
                     $('.overlay-img').show();
                     for (let i = 0; i < e.images.length; i++) {
@@ -60,11 +63,18 @@ $(document).ready(function () {
                             .attr('src', e.images[i].filepath)
                             .attr('title', 'Fichier : ' + e.images[i].name);
 
+                        let updateImg = $('<span class="description-img">D</span>')
+                            .attr('data-id', e.images[i]._id)
+                            .attr('title', 'Mettre à jour la description de cette image');
+
                         divglobal.appendTo('.images');
                         myImg.appendTo('#glob' + [i]);
                         delImg.appendTo('#glob' + [i]);
+                        updateImg.appendTo('#glob' + [i]);
                     }
-                    // Suppression d'une seule image quand on clique supprimer
+
+                    // Suppression d'UNE SEULE image quand on clique supprimer
+                    // En lien avec delImg
                     $('.del-img').on('click', e => {
                         const id = e.currentTarget.attributes[0].nodeValue;
                         const name = e.currentTarget.attributes[1].nodeValue;
@@ -83,11 +93,44 @@ $(document).ready(function () {
                                 }
                             })
                         });
-                        $('.no-one').on('click', e => {
-                            $('.overlay-del-one-img').hide();
+                    });
+/*
+                    // Mettre à jour une image quand on clique sur la pastille de description
+                    $('.description-img').on('click', function (e) {
+                        let $this = $(this);
+                        let searchedId = $this.data('id'); // récupère l'id de l'image en cours
+
+                        $('.overlay-update').show();
+
+                        $('.valid-form-update').on('click', function (e) {
+                            console.log(searchedId);
+                            console.log($('.description-input').value);
+                            $.ajax({
+                                url: '/' + albumName + '/' + id,
+                                type:'DELETE',
+                                success: e => {
+                                    console.log(e);
+                                    refuseUpdate(); // si la requête passe, exécuter
+                                },
+                                error: e => {
+                                    console.log(e);
+                                }
+                            });
+                            //requete AJAX du update
+                        });
+                        $('.refuse-form-update').on('click', e => {
+                            console.log(searchedId + 'azezaezaezeazez');
+                            refuseUpdate();
                         });
 
-                    });
+                        // POPUP UPDATE DESCRIPTION QUAND ON REFUSE
+                        // FONCTIONNEMENT DIFFERENT CAR POPUP DANS POPUP
+                        function refuseUpdate() {
+                            // $('input').empty().html('');
+                            // $('.overlay-update').hide();
+                            // $('.overlay-img').show();
+                        }
+                    });*/
 
                 });
             },
@@ -113,11 +156,13 @@ $(document).ready(function () {
     });
 
     // NON DANS LES POPUP
-    $('.no').on('click', e => {
+    // SAUF UPDATE
+    $('.no, .no-one').on('click', e => {
         $('.overlay-del').hide();
         $('.overlay-img').hide();
         $('.overlay-del-one-img').hide();
         $('.images').empty();
+        // $('.overlay-update').hide(); // rajouter .refuse-form-update
     });
 
     // GROS BOUTON DELETE

@@ -9,7 +9,7 @@ $dark-blue: #111e39;
 
 body {
   color: white;
-  overflow:hidden;
+  overflow: hidden;
   @include breakpoint(mobile) {
     background: #131524 url("../img/hero_mobile.jpg") center 9% no-repeat !important;
   }
@@ -130,12 +130,16 @@ body {
     margin-top: 20px;
   }
 }
-  .block-status {
-    text-align: center;
-  }
+
+.block-status {
+  text-align: center;
+}
 
 //OVERLAY's
-.overlay-del, .overlay-img, .overlay-del-one-img {
+.overlay-del,
+.overlay-img,
+.overlay-del-one-img,
+.overlay-update {
   display: none;
   position: absolute;
   top: 0;
@@ -158,7 +162,7 @@ body {
     }
     .action-man {
       margin: 5px auto 0;
-      .yes, .no, .yes-one, .no-one, .closed {
+      .yes, .no, .yes-one, .no-one, .closed, .update {
         background-color: $dark-blue;
       }
     }
@@ -194,6 +198,22 @@ body {
           cursor: pointer;
         }
       }
+      .description-img {
+        position: absolute;
+        left: 0;
+        text-align: center;
+        font-weight: bold;
+        color: $dark-blue;
+        background: white;
+        width: 20px;
+        border: 1px solid;
+        &:hover {
+          cursor: pointer;
+          background-color: $dark-blue;
+          color:white;
+          border: $dark-blue;
+        }
+      }
     }
   }
 
@@ -202,6 +222,9 @@ body {
     overflow-x: auto;
     margin-bottom: 20px;
   }
+}
+.overlay-update {
+  z-index: 99;
 }
 
 @media all and (max-width: 768px) {

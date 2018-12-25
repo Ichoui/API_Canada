@@ -68,7 +68,7 @@ router.get('/', (req, res, next) => {
 
 // POST
 router.post('/', upload.array('path', 1000), (req, res, next) => {
-    console.log(req.files);
+    // console.log(req);
     const lengthReq = req.files.length;
     let img;
 
@@ -88,7 +88,7 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
             _id: new mongoose.Types.ObjectId(),
             name: req.files[i].filename,
             filepath: req.protocol + "://" + req.headers.host + "/" + splittedUrl[1] + "/" + splittedUrl[2],
-            description: ''
+            description: null
         });
 
         img.save()
@@ -156,6 +156,13 @@ router.delete("/:imageId", (req, res, next) => {
             // console.log(err);
             res.status(500).json({delete_error: err});
         })
+});
+
+// UPDATE DESCRIPTION
+router.patch('/:imageId', (req, res, next) => {
+    res.status(200).json({
+        message: 'Updated product!'
+    });
 });
 
 module.exports = router;
