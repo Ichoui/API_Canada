@@ -22,7 +22,14 @@
 - Ajouter une nouvelle ``condition @elseIf`` dans la fonction ``whereIAm()`` dans ``/public/resources/js/data-json.js``
 - Passer une nouvelle variable ``{newAlbum}Folder`` à la vue profile.ejs dans ``config/routes/profile-route.js``
 - Dupliquer ``blocks-block`` en :<ul><li>remplaçant les <b>4</b> variables avec celle du nouvel album créée à l'étape précédente</li><li>incrémenter l'<b>ID</b> de l'<i>input</i> et son <i>label</i> associé</li></ul>
+- Se référer en dernier lieu au <b>Quatrième point</b> de la section suivante
 
+### Déployer en prod - côté serveur
+- ``npm stop`` pour couper le serveur le temps du déploiement
+- ``git pull`` depuis le dossier<ul><li>``git stash`` si des modifications non-importante on été faite en prod)</li></ul>
+- ``npm i`` si nouveau package installé en dév
+- update du fichier ``.env`` si il a été modifié en dév avec le même contenu (important)
+- ``npm start`` pour relancer le serveur
 
 ---
 ##### Attention : il est nécessaire d'avoir un fichier .env pour le bon fonctionnement du projet. Ce fichier est .gitignore et est réservé à l'administrateur.
