@@ -134,6 +134,25 @@ router.get('/:imageId', (req, res, next) => {
 
 // DELETE ALL IMAGES
 router.delete("/", (req, res, next) => {
+    // delete tout dans le dossier conteneur
+    Image.find()
+        .select('name')
+        .exec()
+        .then(docs => {
+            console.log(docs);
+            fs.readdir('./images/' + albumName, function (err, files) {
+                for (const file of files) {
+                    fs.unlink('./images/'+ albumName + '/'+ file, err => {
+                        if (err ) {console.log(err)}
+                    })
+                }
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+    // delete tout dans la database
     Image.remove({})
         .exec()
         .then(result => {
@@ -147,6 +166,21 @@ router.delete("/", (req, res, next) => {
 //DELETE ID
 router.delete("/:imageId", (req, res, next) => {
     const id = req.params.imageId;
+
+    // Remove une seule image dans le dossier contenant l'image
+    Image.findById(id)
+        .select('name')
+        .exec()
+        .then(docs => {
+            let name = docs.name;
+            fs.unlink('./images/' + albumName + '/' + name, function () {
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+    // Remove une seule image dans la database
     Image.remove({_id: id})
         .exec()
         .then(result => {

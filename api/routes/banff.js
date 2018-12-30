@@ -54,7 +54,6 @@ router.get('/', (req, res, next) => {
                     }
                 })
             };
-
             if (docs.length > 0) {
                 res.status(200).json(response);
             } else {
@@ -71,7 +70,6 @@ router.post('/', upload.array('path', 1000), (req, res, next) => {
     // console.log(req);
     const lengthReq = req.files.length;
     let img;
-
     for (let i = 0; i < lengthReq; i++) {
         let mypath = req.files[i].path;
         let splittedUrl;
@@ -134,6 +132,25 @@ router.get('/:imageId', (req, res, next) => {
 
 // DELETE ALL IMAGES
 router.delete("/", (req, res, next) => {
+    // delete tout dans le dossier conteneur
+    Image.find()
+        .select('name')
+        .exec()
+        .then(docs => {
+            console.log(docs);
+            fs.readdir('./images/' + albumName, function (err, files) {
+                for (const file of files) {
+                    fs.unlink('./images/'+ albumName + '/'+ file, err => {
+                        if (err ) {console.log(err)}
+                    })
+                }
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+    // delete tout dans la database
     Image.remove({})
         .exec()
         .then(result => {
@@ -147,10 +164,25 @@ router.delete("/", (req, res, next) => {
 //DELETE ID
 router.delete("/:imageId", (req, res, next) => {
     const id = req.params.imageId;
+
+    // Remove une seule image dans le dossier contenant l'image
+    Image.findById(id)
+        .select('name')
+        .exec()
+        .then(docs => {
+            let name = docs.name;
+            fs.unlink('./images/' + albumName + '/' + name, function () {
+            });
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+    // Remove une seule image dans la database
     Image.remove({_id: id})
         .exec()
         .then(result => {
-            res.status(200).json(result)
+            res.status(200).json(result);
         })
         .catch(err => {
             // console.log(err);
