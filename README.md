@@ -21,7 +21,7 @@
     <li>Utiliser cette variable (ex : <b>app.use('/banff', banffRoutes)</b></li></ul>
 - Ajouter une nouvelle ``condition @elseIf`` dans la fonction ``whereIAm()`` dans ``/public/resources/js/data-json.js``
 - Passer une nouvelle variable ``{newAlbum}Folder`` à la vue profile.ejs dans ``config/routes/profile-route.js``
-- Dupliquer ``blocks-block`` en :<ul><li>remplaçant les <b>4</b> variables avec celle du nouvel album créée à l'étape précédente</li><li>incrémentant l'<b>ID</b> de l'<i>input</i> et son <i>label</i> associé</li></ul>
+- Dupliquer ``blocks-block`` en :<ul><li>remplaçant les <b>4</b> variables avec celle du nouvel album créée à l'étape précédente</li><li>incrémenter l'<b>ID</b> de l'<i>input</i> et son <i>label</i> associé</li></ul>
 
 
 ---
