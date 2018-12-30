@@ -115,6 +115,9 @@ body {
     width: 300px;
     padding: 10px;
     margin: 10px auto;
+    h2 {
+      text-transform: capitalize;
+    }
     label.btn-cool {
       border: 0;
       border-bottom: 1px solid white;

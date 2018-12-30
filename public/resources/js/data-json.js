@@ -12,6 +12,8 @@ $(document).ready(function () {
 
         } else if ($this.closest($block).hasClass('francois')) {
             albumName = 'francois';
+        } else if ($this.closest($block).hasClass('jump')) {
+            albumName = 'jump';
         }
         return albumName;
     }
@@ -94,43 +96,43 @@ $(document).ready(function () {
                             })
                         });
                     });
-/*
-                    // Mettre à jour une image quand on clique sur la pastille de description
-                    $('.description-img').on('click', function (e) {
-                        let $this = $(this);
-                        let searchedId = $this.data('id'); // récupère l'id de l'image en cours
+                    /*
+                                        // Mettre à jour une image quand on clique sur la pastille de description
+                                        $('.description-img').on('click', function (e) {
+                                            let $this = $(this);
+                                            let searchedId = $this.data('id'); // récupère l'id de l'image en cours
 
-                        $('.overlay-update').show();
+                                            $('.overlay-update').show();
 
-                        $('.valid-form-update').on('click', function (e) {
-                            console.log(searchedId);
-                            console.log($('.description-input').value);
-                            $.ajax({
-                                url: '/' + albumName + '/' + id,
-                                type:'DELETE',
-                                success: e => {
-                                    console.log(e);
-                                    refuseUpdate(); // si la requête passe, exécuter
-                                },
-                                error: e => {
-                                    console.log(e);
-                                }
-                            });
-                            //requete AJAX du update
-                        });
-                        $('.refuse-form-update').on('click', e => {
-                            console.log(searchedId + 'azezaezaezeazez');
-                            refuseUpdate();
-                        });
+                                            $('.valid-form-update').on('click', function (e) {
+                                                console.log(searchedId);
+                                                console.log($('.description-input').value);
+                                                $.ajax({
+                                                    url: '/' + albumName + '/' + id,
+                                                    type:'DELETE',
+                                                    success: e => {
+                                                        console.log(e);
+                                                        refuseUpdate(); // si la requête passe, exécuter
+                                                    },
+                                                    error: e => {
+                                                        console.log(e);
+                                                    }
+                                                });
+                                                //requete AJAX du update
+                                            });
+                                            $('.refuse-form-update').on('click', e => {
+                                                console.log(searchedId + 'azezaezaezeazez');
+                                                refuseUpdate();
+                                            });
 
-                        // POPUP UPDATE DESCRIPTION QUAND ON REFUSE
-                        // FONCTIONNEMENT DIFFERENT CAR POPUP DANS POPUP
-                        function refuseUpdate() {
-                            // $('input').empty().html('');
-                            // $('.overlay-update').hide();
-                            // $('.overlay-img').show();
-                        }
-                    });*/
+                                            // POPUP UPDATE DESCRIPTION QUAND ON REFUSE
+                                            // FONCTIONNEMENT DIFFERENT CAR POPUP DANS POPUP
+                                            function refuseUpdate() {
+                                                // $('input').empty().html('');
+                                                // $('.overlay-update').hide();
+                                                // $('.overlay-img').show();
+                                            }
+                                        });*/
 
                 });
             },

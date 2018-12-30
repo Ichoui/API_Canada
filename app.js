@@ -43,6 +43,7 @@ const profileRoute = require('./config/routes/profile-route');
 const banffRoutes = require('./api/routes/banff');
 const mapleRoutes = require('./api/routes/maple');
 const francoisRoutes = require('./api/routes/francois');
+const jumpRoutes = require('./api/routes/jump');
 
 // DATABASE
 const urlMongoose = 'mongodb+srv://canada:' + process.env.MONGO_ATLAS_PW +
@@ -71,6 +72,7 @@ app.get('/', function (req, res) {
 app.use('/banff', banffRoutes);
 app.use('/maple', mapleRoutes);
 app.use('/francois', francoisRoutes);
+app.use('/jump', jumpRoutes);
 
 // Paths google et authentification
 app.use('/', routeGoogle);
