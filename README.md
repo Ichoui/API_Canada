@@ -33,3 +33,4 @@
 
 ---
 ##### Attention : il est nécessaire d'avoir un fichier .env pour le bon fonctionnement du projet. Ce fichier est .gitignore et est réservé à l'administrateur.
+###### La suppression d'image au cas par cas ne fonctionne pas idéalement. Préférer la supression en gros.
