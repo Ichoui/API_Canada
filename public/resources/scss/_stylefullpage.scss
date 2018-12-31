@@ -10,6 +10,7 @@ $dark-blue: #111e39;
 body {
   color: white;
   overflow: hidden;
+  font-family: $font;
   @include breakpoint(mobile) {
     background: #131524 url("../img/hero_mobile.jpg") center 9% no-repeat !important;
   }
@@ -123,6 +124,9 @@ body {
       border-bottom: 1px solid white;
       width: 50%;
     }
+    button.btn-cool {
+      width: 48%;
+    }
     &:hover {
       border: 1px solid white;
       transition: opacity .5s ease;
@@ -150,6 +154,7 @@ body {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 888;
   .popin {
     position: absolute;
     transform: translate(-50%, -50%);
@@ -195,6 +200,8 @@ body {
         font-size: 12px;
         bottom: -20px;
         left: 0;
+        height: 20px;
+        line-height: 15px;
         &:hover {
           color: white;
           background-color: $dark-blue;
@@ -213,7 +220,7 @@ body {
         &:hover {
           cursor: pointer;
           background-color: $dark-blue;
-          color:white;
+          color: white;
           border: $dark-blue;
         }
       }
@@ -226,6 +233,7 @@ body {
     margin-bottom: 20px;
   }
 }
+
 .overlay-update {
   z-index: 99;
 }
@@ -245,3 +253,29 @@ body {
   opacity: 0;
   visibility: hidden;
 }
+
+.slick-arrow {
+  top:62%;
+  z-index: 555;
+  &:before {
+    font-size: 35px;
+    opacity: 1;
+  }
+}
+
+.slick-prev {
+  left: 5vh;
+  &:before {
+    font-family: 'maple-icomoon', sans-serif;
+    content:'\e905';
+  }
+}
+
+.slick-next {
+  right: 5vh;
+  &:before {
+    font-family: 'maple-icomoon', sans-serif;
+    content:'\e904';
+  }
+}
+

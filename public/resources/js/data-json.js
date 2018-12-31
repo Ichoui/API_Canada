@@ -65,14 +65,14 @@ $(document).ready(function () {
                             .attr('src', e.images[i].filepath)
                             .attr('title', 'Fichier : ' + e.images[i].name);
 
-                        let updateImg = $('<span class="description-img">D</span>')
-                            .attr('data-id', e.images[i]._id)
-                            .attr('title', 'Mettre à jour la description de cette image');
-
+                        /* let updateImg = $('<span class="description-img">D</span>')
+                             .attr('data-id', e.images[i]._id)
+                             .attr('title', 'Mettre à jour la description de cette image');
+ */
                         divglobal.appendTo('.images');
                         myImg.appendTo('#glob' + [i]);
                         delImg.appendTo('#glob' + [i]);
-                        updateImg.appendTo('#glob' + [i]);
+                        // updateImg.appendTo('#glob' + [i]);
                     }
 
                     // Suppression d'UNE SEULE image quand on clique supprimer
@@ -177,6 +177,14 @@ $(document).ready(function () {
         dots: false,
         slideToShow: 1,
         slideToScroll: 1,
-        infinite: false
+        infinite: false,
+        responsive: [
+            {
+                breakpoint: 550,
+                settings: {
+                    arrows:false
+                }
+            }
+        ]
     });
 });

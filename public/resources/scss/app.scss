@@ -1,5 +1,10 @@
+// VARIABLES
+$font: 'Helvetica-Black', sans-serif;
+
 @import "node_modules/bootstrap/scss/bootstrap";
 
+@import "fonts";
+@import "icomoon";
 @import "slick-theme";
 @import "slick";
 @import "stylefullpage";

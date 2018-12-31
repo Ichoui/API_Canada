@@ -6313,6 +6313,51 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6; } }
 
+@font-face {
+  font-family: 'Helvetica-Black';
+  src: url("/resources/fonts/Helvetica-Black.eot");
+  src: url("/resources/fonts/Helvetica-Black.eot?#iefix") format("embedded-opentype"), url("/resources/fonts/Helvetica-Black.woff2") format("woff2"), url("/resources/fonts/Helvetica-Black.woff") format("woff"), url("/resources/fonts/Helvetica-Black.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'maple-icomoon';
+  src: url("../fonts/maple-icomoon.eot?jm00th");
+  src: url("../fonts/maple-icomoon.eot?jm00th#iefix") format("embedded-opentype"), url("../fonts/maple-icomoon.ttf?jm00th") format("truetype"), url("../fonts/maple-icomoon.woff?jm00th") format("woff"), url("../fonts/maple-icomoon.svg?jm00th#maple-icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'maple-icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-cancel:before {
+  content: "\e900"; }
+
+.icon-burger:before {
+  content: "\e901"; }
+
+.icon-logout:before {
+  content: "\e902"; }
+
+.icon-rotate:before {
+  content: "\e903"; }
+
+.icon-next-arrow:before {
+  content: "\e904"; }
+
+.icon-back-arrow:before {
+  content: "\e905"; }
+
 /* Slider */
 .slick-loading .slick-list {
   background: #fff url("./ajax-loader.gif") center center no-repeat; }
@@ -6520,7 +6565,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 body {
   color: white;
-  overflow: hidden; }
+  overflow: hidden;
+  font-family: "Helvetica-Black", sans-serif; }
   @media all and (max-width: 480px) {
     body {
       background: #131524 url("../img/hero_mobile.jpg") center 9% no-repeat !important; } }
@@ -6616,6 +6662,8 @@ body {
       border: 0;
       border-bottom: 1px solid white;
       width: 50%; }
+    .blocks-block .block button.btn-cool {
+      width: 48%; }
     .blocks-block .block:hover {
       border: 1px solid white;
       transition: opacity .5s ease; }
@@ -6636,7 +6684,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 888; }
   .overlay-del .popin,
   .overlay-img .popin,
   .overlay-del-one-img .popin,
@@ -6701,7 +6750,9 @@ body {
       z-index: 2;
       font-size: 12px;
       bottom: -20px;
-      left: 0; }
+      left: 0;
+      height: 20px;
+      line-height: 15px; }
       .overlay-img .images .glob .del-img:hover {
         color: white;
         background-color: #111e39;
@@ -6736,3 +6787,22 @@ body {
 .blocks-slider {
   opacity: 0;
   visibility: hidden; }
+
+.slick-arrow {
+  top: 62%;
+  z-index: 555; }
+  .slick-arrow:before {
+    font-size: 35px;
+    opacity: 1; }
+
+.slick-prev {
+  left: 5vh; }
+  .slick-prev:before {
+    font-family: 'maple-icomoon', sans-serif;
+    content: '\e905'; }
+
+.slick-next {
+  right: 5vh; }
+  .slick-next:before {
+    font-family: 'maple-icomoon', sans-serif;
+    content: '\e904'; }
