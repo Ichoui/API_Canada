@@ -49,6 +49,7 @@ body {
     top: 0;
     @include breakpoint(mobile) {
       position: unset;
+      width: 120px;
     }
   }
   h1.title {
@@ -57,6 +58,7 @@ body {
     font-size: 1.5em;
     @include breakpoint(mobile) {
       margin-left: 0;
+      font-size: 1.2em;
     }
   }
   .nav-right {
@@ -64,20 +66,15 @@ body {
     right: 20px;
     top: 5px;
     @include breakpoint(mobile) {
-      transform: translate(-50%, -50%);
-      left: 50%;
-      top: 200%;
-      right: auto;
+      position: unset;
+      margin: 0 auto ;
+      width: 100%;
+      text-align: center;
     }
     .google-img {
       border-radius: 50%;
       margin-right: 20px;
-      @include breakpoint(mobile) {
-        position: absolute;
-        top: -80px;
-        transform: translate(-50%, -50%);
-        left: 50%;
-      }
+
     }
   }
 }
@@ -238,11 +235,6 @@ body {
   z-index: 99;
 }
 
-@media all and (max-width: 768px) {
-  body {
-  }
-}
-
 // MITCH-NIQUE POUR POP NON SACCADÉ DE SLICKOUILLE
 .blocks-slider.slick-initialized {
   visibility: visible;
@@ -255,7 +247,7 @@ body {
 }
 
 .slick-arrow {
-  top:62%;
+  top: 62%;
   z-index: 555;
   &:before {
     font-size: 35px;
@@ -267,7 +259,7 @@ body {
   left: 5vh;
   &:before {
     font-family: 'maple-icomoon', sans-serif;
-    content:'\e905';
+    content: '\e905';
   }
 }
 
@@ -275,7 +267,6 @@ body {
   right: 5vh;
   &:before {
     font-family: 'maple-icomoon', sans-serif;
-    content:'\e904';
+    content: '\e904';
   }
 }
-

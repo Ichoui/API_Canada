@@ -6599,33 +6599,29 @@ body {
     top: 0; }
     @media all and (max-width: 480px) {
       .nav img.logo {
-        position: unset; } }
+        position: unset;
+        width: 120px; } }
   .nav h1.title {
     text-transform: uppercase;
     margin-left: 150px;
     font-size: 1.5em; }
     @media all and (max-width: 480px) {
       .nav h1.title {
-        margin-left: 0; } }
+        margin-left: 0;
+        font-size: 1.2em; } }
   .nav .nav-right {
     position: absolute;
     right: 20px;
     top: 5px; }
     @media all and (max-width: 480px) {
       .nav .nav-right {
-        transform: translate(-50%, -50%);
-        left: 50%;
-        top: 200%;
-        right: auto; } }
+        position: unset;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center; } }
     .nav .nav-right .google-img {
       border-radius: 50%;
       margin-right: 20px; }
-      @media all and (max-width: 480px) {
-        .nav .nav-right .google-img {
-          position: absolute;
-          top: -80px;
-          transform: translate(-50%, -50%);
-          left: 50%; } }
 
 .btn-cool {
   background-color: transparent;
