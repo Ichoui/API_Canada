@@ -81,7 +81,6 @@ $(document).ready(function () {
                         const id = e.currentTarget.attributes[0].nodeValue;
                         const name = e.currentTarget.attributes[1].nodeValue;
                         const currentSpan = e.currentTarget;
-                        console.log(e);
                         $('.overlay-del-one-img').show();
                         $('.yes-one').on('click', e => {
                             const divToHide = currentSpan.closest('div.glob');
