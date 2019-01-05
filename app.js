@@ -8,12 +8,14 @@ const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 require('dotenv').config();
+const fs = require('fs');
 
 // COOKIE
 app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000,
     keys: [process.env.COOKIE_KEY]
 }));
+
 
 // CORS : CROSS-ORIGIN-RESOURCE-SHARING
 // Permet l'échange entre 2 domaines différents de data's, très important

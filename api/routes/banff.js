@@ -29,8 +29,8 @@ const upload = multer({
 });
 
 //Create folder (Laisser le dossier images à la racine)
-fs.mkdir('./images/' + albumName, err => {
-});
+/*fs.mkdir('images/banff', 0o777 , err => {
+});*/
 
 // Modeles
 const Image = require('../models/' + albumName + '.model');
