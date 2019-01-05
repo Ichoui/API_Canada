@@ -151,7 +151,11 @@ $(document).ready(function () {
             type: 'DELETE',
             success: e => {
                 console.log(e);
-                $("#status").empty().html(e.success + " <br> Nombre d'immages supprimées : " + e.message.n);
+                if (e.message.n === 0) {
+                $("#status").empty().html("La base de données d'images étant vide, aucune images n'ont été supprimée.");
+                } else {
+                $("#status").empty().html(e.success + " <br> Nombre d'images supprimées : " + e.message.n);
+                }
             }
         });
     });

@@ -6802,3 +6802,14 @@ body {
   .slick-next:before {
     font-family: 'maple-icomoon', sans-serif;
     content: '\e904'; }
+
+.credits {
+  position: absolute;
+  bottom: 5px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  text-align: center; }
+  .credits p {
+    margin-bottom: 0; }
+  .credits a {
+    color: #345caf; }
