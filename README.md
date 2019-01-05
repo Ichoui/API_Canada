@@ -30,8 +30,13 @@
 - `git pull` depuis le dossier<ul><li>`git stash` si des modifications non-importante on été faite en prod)</li></ul>
 - `npm i` si nouveau package installé en dév (Optionnel)
 - `cd path/to/API_Canada/images/`, puis `sudo mkdir -m 777 {albumName}` (`ll` pour confirmer)
-- update du fichier `.env` si il a été modifié en dév avec le même contenu (important)
+- update du fichier `.env` si il a été modifié en dév avec le même contenu (important) <ul>(attention à ce que la variable `MONGO_DATABASE` soit à "prod")</ul>
 - `npm start` pour relancer le serveur
+
+### Ajouter un nouvel utilisateur
+- Ajouter le Google ID (trouvable via `npm run logs` quand cet utilisateur se connecte) dans le fichier `.env`
+- Ajouter un variable qu'on envoie à la vue dans `/config/routes/profile-route.js`
+- Conditionner le nouvel utilisateur dans le fichier `public/profile.ejs`
 
 ---
 ##### Attention : il est nécessaire d'avoir un fichier .env pour le bon fonctionnement du projet. Ce fichier est .gitignore et est réservé à l'administrateur.

@@ -20,6 +20,7 @@ router.get('/profile', authCheck, (req, res) => {
         user: req.user,
         admin: process.env.GOOGLE_ID_ADMIN,
         francois: process.env.GOOGLE_ID_FRANCOIS,
+        jumperA: 'jumperToDefine',
         folderBanff: process.env.BANFF_FOLDER,
         folderFrancois: process.env.FRANCOIS_FOLDER,
         folderMaple: process.env.MAPLE_FOLDER,

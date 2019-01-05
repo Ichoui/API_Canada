@@ -289,6 +289,15 @@ body {
   }
 }
 
+.slick-disabled {
+  &:hover {
+    cursor:not-allowed;
+    &:before {
+      color:white;
+    }
+  }
+}
+
 //credits
 .credits {
   position: absolute;

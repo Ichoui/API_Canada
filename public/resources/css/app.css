@@ -6812,6 +6812,11 @@ body {
     font-family: 'maple-icomoon', sans-serif;
     content: '\e904'; }
 
+.slick-disabled:hover {
+  cursor: not-allowed; }
+  .slick-disabled:hover:before {
+    color: white; }
+
 .credits {
   position: absolute;
   bottom: 5px;
