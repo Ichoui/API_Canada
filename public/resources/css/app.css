@@ -6630,12 +6630,21 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-bottom-color: #7996af;
   padding: 8px 15px;
-  transition: border-color 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: background-color 0.35s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   color: white; }
   .btn-cool:hover {
     color: white;
     background-color: #7996af;
-    text-decoration: none; }
+    text-decoration: none;
+    outline: 0; }
+
+.anim-fulfill span:hover, .slick-arrow:hover:before span:hover {
+  color: #7493d5;
+  transition: all 0.4s cubic-bezier(0.42, 0.12, 0.31, 0.99); }
+
+.anim-fulfill:hover, .slick-arrow:hover:before {
+  color: #7493d5;
+  transition: all 0.4s cubic-bezier(0.42, 0.12, 0.31, 0.99); }
 
 .blocks-block {
   display: flex;

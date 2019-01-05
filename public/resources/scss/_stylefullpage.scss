@@ -67,7 +67,7 @@ body {
     top: 5px;
     @include breakpoint(mobile) {
       position: unset;
-      margin: 0 auto ;
+      margin: 0 auto;
       width: 100%;
       text-align: center;
     }
@@ -86,13 +86,26 @@ body {
   width: auto;
   border: 1px solid hsla(0, 0%, 100%, .25);
   border-bottom-color: #7996af;
+
   padding: 8px 15px;
-  transition: border-color .35s cubic-bezier(.785, .135, .15, .86);
+  transition: background-color .35s cubic-bezier(.785, .135, .15, .86);
   color: white;
   &:hover {
     color: white;
     background-color: #7996af;
     text-decoration: none;
+    outline: 0;
+  }
+}
+
+.anim-fulfill {
+  span:hover {
+    color: lighten($dark-blue, 50%);
+    transition: all .4s cubic-bezier(.42, .12, .31, .99);
+  }
+  &:hover {
+    color: lighten($dark-blue, 50%);
+    transition: all .4s cubic-bezier(.42, .12, .31, .99);
   }
 }
 
@@ -253,6 +266,11 @@ body {
     font-size: 35px;
     opacity: 1;
   }
+  &:hover {
+    &:before {
+      @extend .anim-fulfill;
+    }
+  }
 }
 
 .slick-prev {
@@ -282,6 +300,6 @@ body {
     margin-bottom: 0;
   }
   a {
-  color:lighten($dark-blue,30%);
+    color: lighten($dark-blue, 30%);
   }
 }
