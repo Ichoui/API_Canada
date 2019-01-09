@@ -92,14 +92,15 @@
 <% include popin-shared.ejs %>
 
 <% } %>
-<% if (user.googleId === zaetan) { %>
+<% var zaetan = process.env.GOOGLE_ID_ZAETAN;
+if (user.googleId === zaetan) { %>
     <div class="blocks-slider">
         <div class="blocks-block <%= folderJump %>" data-placement="<%= folderJump %>">
             <div class="block">
                 <h2 class="text-center"><%= folderJump %></h2>
                 <form class="post" enctype="multipart/form-data" action="/<%= folderJump %>" method="post">
-                    <input type="file" name="path" id="path4" style="display: none;" multiple/><br>
-                    <label for="path4" class="btn-cool">Choose your image(s)</label>
+                    <input type="file" name="path" id="path" style="display: none;" multiple/><br>
+                    <label for="path" class="btn-cool">Choose your image(s)</label>
                     <button type="submit" class="btn-cool">POST</button>
                 </form>
                 <div class="block-a">
