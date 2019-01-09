@@ -18,9 +18,6 @@ router.get('/profile', authCheck, (req, res) => {
     console.log('you are logged in ' + req.user.firstname + ' -- GoogleID : ' +  req.user.googleId);
     res.render('profile', {
         user: req.user,
-        admin: process.env.GOOGLE_ID_ADMIN,
-        francois: process.env.GOOGLE_ID_FRANCOIS,
-        zaetan: process.env.GOOGLE_ID_ZAETAN ,
         folderBanff: process.env.BANFF_FOLDER,
         folderFrancois: process.env.FRANCOIS_FOLDER,
         folderMaple: process.env.MAPLE_FOLDER,
