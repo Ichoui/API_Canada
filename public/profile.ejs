@@ -24,11 +24,10 @@
 
 <%
 var admin = process.env.GOOGLE_ID_ADMIN;
+var francois = process.env.GOOGLE_ID_FRANCOIS;
 var zaetan = process.env.GOOGLE_ID_ZAETAN;
 var tartidou = process.env.GOOGLE_ID_TARTIDOU;
 var tester = process.env.GOOGLE_ID_TESTER;
-var francois = process.env.GOOGLE_ID_FRANCOIS;
-var tester2;
 %>
 <%
 if (user.googleId === admin) { %>
@@ -103,7 +102,7 @@ if (user.googleId === admin) { %>
 <% } %>
 
 <%
-if ((user.googleId === tester) || (user.googleId === zaetan)) { %>
+if ((user.googleId === tester) || (user.googleId === zaetan) || (user.googleId === tartidou)) { %>
     <div class="blocks-slider">
         <div class="blocks-block <%= folderJump %>" data-placement="<%= folderJump %>">
             <div class="block">
