@@ -28,10 +28,10 @@ var zaetan = process.env.GOOGLE_ID_ZAETAN;
 var tartidou = process.env.GOOGLE_ID_TARTIDOU;
 var tester = process.env.GOOGLE_ID_TESTER;
 var francois = process.env.GOOGLE_ID_FRANCOIS;
+var tester2;
 %>
 <%
-var tester2 = process.env.GOOGLE_ID_TESTER;
-if (user.googleId === tester2) { %>
+if (user.googleId === tester) { %>
 <div class="blocks-slider">
     <div class="blocks-block <%= folderBanff %>" data-placement="<%= folderBanff %>">
         <div class="block">
@@ -103,7 +103,7 @@ if (user.googleId === tester2) { %>
 <% } %>
 
 <%
-if (user.googleId === tester) { %>
+if (user.googleId === tester2) { %>
     <div class="blocks-slider">
         <div class="blocks-block <%= folderJump %>" data-placement="<%= folderJump %>">
             <div class="block">
