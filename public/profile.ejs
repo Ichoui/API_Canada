@@ -92,7 +92,8 @@
 <% include popin-shared.ejs %>
 
 <% } %>
-<% var zaetan = process.env.GOOGLE_ID_ZAETAN;
+<%
+var zaetan = process.env.GOOGLE_ID_ZAETAN;
 if (user.googleId === zaetan) { %>
     <div class="blocks-slider">
         <div class="blocks-block <%= folderJump %>" data-placement="<%= folderJump %>">
