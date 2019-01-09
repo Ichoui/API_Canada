@@ -35,7 +35,7 @@
 
 ### Ajouter un nouvel utilisateur
 - Ajouter le Google ID (trouvable via `npm run logs` quand cet utilisateur se connecte) dans le fichier `.env`
-- Ajouter un variable qu'on envoie à la vue dans `/config/routes/profile-route.js`
+- Ajouter une variable directement dans la vue `public/profile.ejs`
 - Conditionner le nouvel utilisateur dans le fichier `public/profile.ejs`
 
 ---
