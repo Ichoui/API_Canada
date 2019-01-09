@@ -23,7 +23,6 @@
 </div>
 
 <%
-var francois = process.env.GOOGLE_ID_FRANCOIS;
 var admin = process.env.GOOGLE_ID_ADMIN;
 var zaetan = process.env.GOOGLE_ID_ZAETAN;
 var tartidou = process.env.GOOGLE_ID_TARTIDOU;
@@ -77,7 +76,10 @@ if (user.googleId === admin) { %>
 
 <% include popin.ejs %>
 <% include popin-shared.ejs %>
-<% } else if (user.googleId === francois) { %>
+<% } %>
+<%
+var francois = process.env.GOOGLE_ID_FRANCOIS;
+if (user.googleId === francois) { %>
 
 <div class="blocks-block <%= folderFrancois %>">
     <div class="block">
@@ -99,7 +101,6 @@ if (user.googleId === admin) { %>
 <% } %>
 <%
 var tester = process.env.GOOGLE_ID_TESTER;
-
 if (user.googleId === tester) { %>
     <div class="blocks-slider">
         <div class="blocks-block <%= folderJump %>" data-placement="<%= folderJump %>">
