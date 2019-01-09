@@ -103,7 +103,7 @@ if (user.googleId === tester2) { %>
 <% } %>
 
 <%
-if (user.googleId === tester) { %>
+if ((user.googleId === tester) || (user.googleId === zaetan)) { %>
     <div class="blocks-slider">
         <div class="blocks-block <%= folderJump %>" data-placement="<%= folderJump %>">
             <div class="block">
