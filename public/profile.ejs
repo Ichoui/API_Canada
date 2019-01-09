@@ -27,7 +27,7 @@ var francois = process.env.GOOGLE_ID_FRANCOIS;
 var admin = process.env.GOOGLE_ID_ADMIN;
 var zaetan = process.env.GOOGLE_ID_ZAETAN;
 var tartidou = process.env.GOOGLE_ID_TARTIDOU;
-var tester = '';
+var tester = process.env.GOOGLE_ID_TESTER;
 
 if (user.googleId === admin) { %>
 <div class="blocks-slider">
@@ -97,7 +97,7 @@ if (user.googleId === admin) { %>
 </div>
 <% include popin-shared.ejs %>
 
-<% } else if (user.googleId === zaetan || user.googleId === tartidou) { %>
+<% } else if (user.googleId === tester || user.googleId === tartidou || user.googleId === zaetan) { %>
     <div class="blocks-slider">
         <div class="blocks-block <%= folderJump %>" data-placement="<%= folderJump %>">
             <div class="block">
