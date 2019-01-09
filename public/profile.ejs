@@ -26,8 +26,11 @@
 var admin = process.env.GOOGLE_ID_ADMIN;
 var zaetan = process.env.GOOGLE_ID_ZAETAN;
 var tartidou = process.env.GOOGLE_ID_TARTIDOU;
-
-if (user.googleId === admin) { %>
+var tester2 = process.env.GOOGLE_ID_TESTER;
+var francois = process.env.GOOGLE_ID_FRANCOIS;
+%>
+<%
+if (user.googleId === tester2) { %>
 <div class="blocks-slider">
     <div class="blocks-block <%= folderBanff %>" data-placement="<%= folderBanff %>">
         <div class="block">
@@ -77,9 +80,7 @@ if (user.googleId === admin) { %>
 <% include popin.ejs %>
 <% include popin-shared.ejs %>
 <% } %>
-<%
-var francois = process.env.GOOGLE_ID_FRANCOIS;
-if (user.googleId === francois) { %>
+<% if (user.googleId === francois) { %>
 
 <div class="blocks-block <%= folderFrancois %>">
     <div class="block">
@@ -99,6 +100,7 @@ if (user.googleId === francois) { %>
 <% include popin-shared.ejs %>
 
 <% } %>
+
 <%
 var tester = process.env.GOOGLE_ID_TESTER;
 if (user.googleId === tester) { %>
@@ -122,8 +124,8 @@ if (user.googleId === tester) { %>
     <% include popin.ejs %>
     <% include popin-shared.ejs %>
 
- <% } else { %>
-<div class="text-center">Bonjour, <%= user.firstname %><br> vous n'êtes pas connecté en tant qu'Administrateur</div>
+ <!--<% } else { %>
+<div class="text-center">Bonjour, <%= user.firstname %><br> vous n'êtes pas connecté en tant qu'Administrateur</div>-->
 <% } %>
 
 
