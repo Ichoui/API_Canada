@@ -21,7 +21,7 @@ router.get('/profile', authCheck, (req, res) => {
         folderBanff: process.env.BANFF_FOLDER,
         folderFrancois: process.env.FRANCOIS_FOLDER,
         folderMaple: process.env.MAPLE_FOLDER,
-        folderJump: process.env.JUMP_FOLDER,
+        folderJump: process.env.JUMP_FOLDER
     });
 });
 
