@@ -26,7 +26,9 @@
 var francois = process.env.GOOGLE_ID_FRANCOIS;
 var admin = process.env.GOOGLE_ID_ADMIN;
 var zaetan = process.env.GOOGLE_ID_ZAETAN;
+var tartidou = process.env.GOOGLE_ID_TARTIDOU;
 var jumptrois = '112346288491595062708';
+
 if (user.googleId === admin) { %>
 <div class="blocks-slider">
     <div class="blocks-block <%= folderBanff %>" data-placement="<%= folderBanff %>">
@@ -95,7 +97,7 @@ if (user.googleId === admin) { %>
 </div>
 <% include popin-shared.ejs %>
 
-<% } else if (user.googleId === jumptrois) { %>
+<% } else if (user.googleId === zaetan || user.googleId === tartidou) { %>
     <div class="blocks-slider">
         <div class="blocks-block <%= folderJump %>" data-placement="<%= folderJump %>">
             <div class="block">
